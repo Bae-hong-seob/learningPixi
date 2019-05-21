@@ -1,24 +1,24 @@
 Learning Pixi
 ===========
 
-- Pixi rendering engine으로 게임과 대화형 미디어를 만드는 단계별 안내.  
-- Updated for Pixi v4.5.5 . 
-(https://github.com/pixijs/pixi.js/releases/tag/v4.5.5)**. Chinese version here: Pixi官方教程中文版.
-(https://github.com/Zainking/learningPixi).
-- you'll love the book, which contains 80% more content!.
+- [Pixi rendering engine]으로 게임과 대화형 미디어를 만드는 단계별 안내.(https://github.com/Bae-hong-seob/learningPixi/blob/develop/korean_ver.md).
+- **[Updated for Pixi v4.5.5]. 
+(https://github.com/pixijs/pixi.js/releases/tag/v4.5.5)**.
+- [Chinese version here: Pixi官方教程中文版.](https://github.com/Zainking/learningPixi).
+- [이 튜토리얼이 마음에 든다면, 80% 더 많은 내용을 담고 있는 이 책을 분명 좋아할 것이다.](http://www.springer.com/us/book/9781484210956).
 
 
+### 목차
 
-##목차
+1. [소개](#소개)
 
-#####1. 소개
-#####2. 설정방법
+2. [설정방법](#설정방법)
 
-         i. 픽시 설치
-#####3. Stage 및 renderer 생성
-#####4. Pixi 속성
-#####5. 텍스처 캐시에 이미지 올리기
-#####6. sprites 표시
+         i. [픽시 설치](#픽시 설치)
+3. [Stage 및 renderer 생성](#Stage 및 renderer 생성)
+4. [Pixi 속성](#Pixi 속성)
+5. [텍스처 캐시에 이미지 올리기](#텍스처 캐시에 이미지 올리기)
+6. [sprites](#sprites 표시)
 
          i. Aliases 사용
         ii. 자세한 로딩 방법
@@ -26,22 +26,22 @@ Learning Pixi
            - (2). load 된 파일에 이름 지정
            - (3). load 진행과정 모니터링
            - (4). Pixi의 로더에 대한 추가 정보
-#####7. 속성의 위치 지정
-#####8. 크기와 규모
-#####9. 회전
-#####10. 부가 이미지 모음으로부터 sprite 만들기
-#####11. 텍스처 atlas 사용하기
-#####12. 텍스처 atlas 올리기
-#####13. 올려진 텍스처 atlas 로부터 sprites 만들기
-#####14. sprites 움직이기
-#####15. 속도의 속성 사용하기
-#####16. 게임 상태
-#####17. 키보드 움직임
-#####18. Sprites 그룹화하기
+7. 속성의 위치 지정
+8. 크기와 규모
+9. 회전
+10. 부가 이미지 모음으로부터 sprite 만들기
+11. 텍스처 atlas 사용하기
+12. 텍스처 atlas 올리기
+13. 올려진 텍스처 atlas 로부터 sprites 만들기
+14. sprites 움직이기
+15. 속도의 속성 사용하기
+16. 게임 상태
+17. 키보드 움직임
+18. Sprites 그룹화하기
 
            i. 지역적 및 종합적 위치
           ii. ParticleContainer 를 사용하여 sprite 그룹화하기
-#####19. Pixi의 그래픽 기초
+19. Pixi의 그래픽 기초
 
            i. 직사각형
           ii. 원
@@ -49,11 +49,11 @@ Learning Pixi
          iv. 둥근 사각형
           v. 선
          vi. 다각형
-#####20. 텍스트 표시
-#####21. 충돌 감지
+20. 텍스트 표시
+21. 충돌 감지
 
           i. hitTestRectangle 함수
-#####22. 사례 연구 : Treasure Hunter     
+22. 사례 연구 : Treasure Hunter     
    
           i. setup 기능에서 게임 초기화
  		  - (1). 게임 장면 만들기
@@ -70,17 +70,17 @@ Learning Pixi
         iv. 괴물 이동하기
          v. 충돌 확인
         vi. 출구 문에 도달하여 게임을 종료한다.
-#####23. sprites에 대한 추가 정보
-#####24. 추가 정보
+23. sprites에 대한 추가 정보
+24. 추가 정보
 
          i. Hexi
         ii. BabylonJS
-#####25. 프로젝트 지원
+25. 프로젝트 지원
 
-
+<a id='introduction'></a>
 소개
-
-Pixi는 매우 빠른 2D sprite rendering 엔진입니다. 이것은 당신이 JavaScript와 다른 HTML5 기술을 사용하여 게임과 응용프로그램을 쉽게 만들 수 있도록 대화형 그래픽을 표시하고, 애니메이션을 제작 및 관리할 수 있도록 도와줄 수 있습니다.  Pixi는 분명 하고, 깔끔한 API를 가지고 있으며 텍스처 atlas를 지원하고 sprite(인터랙티브 이미지)를 나타내기 위한 능률화된 시스템을 제공하는 것과 같은 많은 유용한 기능들을 포함하고 있습니다. 또한 완전한 장면 그래프를 통해 중첩된 sprite(sprite 내부의 sprite)의 계층 구조를 만들 수 있을 뿐 아니라 마우스와 터치를 스프라이트에 직접 연결할 수 있습니다. 그리고 가장 중요한 것은 Pixi는 당신이 원하는 만큼 혹은 더 적게 사용할 수 있도록, 그리고 그것을 당신의 개인적인 코딩 스타일에 적응시키고, 다른 유용한 틀들과 완벽하게 통합할 수 있도록, 당신의 길을 열어준다는 것입니다.
+-----------
+Pixi는 매우 빠른 2D sprite rendering 엔진입니다. 이것은 당신이 JavaScript와 다른 HTML5 기술을 사용하여 게임과 응용프로그램을 쉽게 만들 수 있도록 대화형 그래픽을 표시하고, 애니메이션을 제작 및 관리할 수 있도록 도와줄 수 있습니다.  Pixi는 분명 하고, 깔끔한 API를 가지고 있으며 텍스처 atlas를 지원하고 sprite(인터랙티브 이미지)를 나타내기 위한 능률화된 시스템을 제공하는 것과 같은 많은 유용한 기능들을 포함하고 있습니다. 또한 완전한 장면 그래프를 통해 중첩된 sprite(sprite 내부의 sprite)의 계층 구조를 만들 수 있을 뿐 아니라 마우스와 터치를 스프라이트에 직접 연결할 수 있습니다. 그리고 가장 중요한 것은 Pixi는 당신이 원하는 만큼 혹은 더 적게 사용할 수 있도록다, 그리고 그것을 당신의 개인적인 코딩 스타일에 적응시키고, 다른 유용한 틀들과 완벽하게 통합할 수 있도록, 당신의 길을 열어준다는 것입니다.
 
 Pixi의 API는 실제로 Macromedia/Adobe Flash가 개척한 잘 적용되고 전투 테스트 된 정교한 API입니다. Old-skool Flash 개발자들은 이에 대해 편안함을 느낄 것 입니다. 다른 현재 sprite rendering framework는 CreateJS, Starling, Sparrow 및 Apple의 SpriteKit과 같은 API를 사용합니다. Pixi의 API의 강점은 그것이 범용 목적이라는 것입니다: 이것은 게임 엔진이 아닙니다. 이러한 사실은 여러분이 좋아하는 것을 만들 수 있는 완전한 표현의 자유를 제공하고, 여러분 자신의 맞춤형 게임 엔진을 포장하기 때문에 좋습니다. 이 튜토리얼 에서는 Pixi의 강력한 image rendering 기능과 scene graph를 결합하여 게임을 만드는 방법을 알아 봅니다. 그러나 Pixi는 단지 게임만을 위한 것이 아닙니다. 당신은 이와 같은 기술을 사용하여 모든 대화 형 미디어 응용 프로그램을 만들 수 있습니다. 즉, 휴대 전화 용 앱을 의미합니다!
 
