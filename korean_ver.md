@@ -1027,23 +1027,29 @@ let rocket = new Sprite(texture);
 
 tileset에서 sprite 텍스처를 만드는 것은 자주 이용하기 때문에, Pixi는 이를 수행하는데 도움이 되는 보다 편리한 방법을 제공합니다. 다음에 무엇이 있는지 알아보겠습니다.
 
-<a id='textureatlas'></a>
+<a id='texture-atlas'></a>
 텍스터 atlas 사용하기
-----------------------------
-
+-------------------
 크고 복잡한 게임을 작업하는 경우 tileset에서 sprite를 빠르고 효율적으로 만들 수 있습니다. 이것은 **texture atlas**가 정말 유용하게 쓰이는 곳입니다. 텍스처 atlas는 일치하는 tileset의 PNG 이미지에서 하위 이미지의 위치와 크기가 포함된 JSON 데이터 파일입니다. 텍스처 atlas를 사용하는 경우 표시하려는 하위 이미지의 이름만 알면 됩니다. 임의의 순서로 tileset 이미지를 정렬할 수 있으며 JSON 파일은 크기와 위치를 추적합니다. 이는 tileset 이미지의 크기와 위치가 게임 프로그램에 하드 코딩 되지 않았기 때문에 매우 편리합니다. 이미지 추가, 크기 조정 또는 제거와 같이 tileset를 변경하면 JSON 파일을 다시 게시하기만 하면 게임에서 해당 데이터를 사용하여 올바른 이미지를 표시합니다. 게임 코드를 변경할 필요가 없습니다.
 
-Pixi는 [Texture Packer](https://www.codeandweb.com/texturepacker).라는 유명한 소프트웨어 도구에서 출력하는 표준 JSON 텍스처 atlas 형식과 호환됩니다. Texture Packer의 "필수" 라이센스는 무료입니다. 텍스쳐 지도 제작에 사용하는 방법을 알아보고, 픽즐에 atlas를 로드하십시오. Shoebox 또는 spritesheet.js와 같은 유사한 도구는 Pixi와 호환되는 표준 형식으로 PNG 및 JSON 파일을 출력합니다. (Texture Packer를 사용할 필요가 없습니다.)
+Pixi는 [Texture Packer](https://www.codeandweb.com/texturepacker)라는 유명한 소프트웨어 도구에서 출력하는 표준 JSON 텍스처 atlas 형식과 호환됩니다. Texture Packer의 "필수" 라이센스는 무료입니다. 텍스쳐 지도 제작에 사용하는 방법을 알아보고, 픽즐에 atlas를 로드하십시오. [Shoebox](http://renderhjs.net/shoebox/) 또는 [spritesheet.js](https://github.com/krzysztof-o/spritesheet.js/)와 같은 유사한 도구는 Pixi와 호환되는 표준 형식으로 PNG 및 JSON 파일을 출력합니다. (Texture Packer를 사용할 필요가 없습니다.)
 
 먼저, 게임에서 사용할 개별 이미지 파일 모음부터 시작하십시오.
- 
-(이 섹션의 모든 이미지는 Lanea Zimmerman에 의해 작성되었습니다. 여기에서 그녀의 작품을 더 많이 찾을 수 있습니다. 감사합니다, Lanea!)
 
-그런 다음 Texture Packer를 열고 프레임 워크 유형으로 JSON Hash를 선택하십시오. 이미지를 Texture Packer의 작업 공간으로 드래그 하십시오. (Texture Packer가 이미지가 있는 폴더를 가리킬수도 있습니다.) 이미지는 자동으로 단일 tileset 이미지에 정렬되고 원래 이미지 이름과 일치하는 이름을 지정합니다.
- 
-(무료 버전의 Texture Packer를 사용하는 경우, Algorithm을 basix으로 설정하고 Trim mode를 none으로 설정하고 Extrude를 0으로 설정하고 Size constraints을 Any size로 설정한 다음 PNG Opt Level을 왼쪽에서 0까지 끝까지 슬라이드 합니다. 이것은 무료 버전의 Texture Packer가 경고 나 오류없이 파일을 생성할 수 있게 해주는 기본 설정입니다.)
+![Image files](/examples/images/screenshots/11.png)
 
-완료되면 Publish 버튼을 클릭하십시오. 파일 이름과 위치를 선택하고 게시된 파일을 저장하십시오. PNG 파일과 JSON 파일의 두 파일로 끝납니다. 이 예제에서 내 파일 이름은 treasureHunter.json 및 treasureHunter.png입니다. 좀 더 편하게 하려면, 두 파일을 모두 프로젝트의 image 폴더에 보관하십시오. (JSON 파일은 이미지 파일의 추가 메타 데이터로 생각할 수 있으므로 두 파일을 같은 폴더에 보관하는 것이 좋습니다.) JSON 파일은 tileset 각각의 하위 이미지의 이름, 크기 및 위치를 설명합니다. 여기 얼룩 괴물의 하위 이미지를 설명하는 발췌 부분이 있습니다.
+(이 섹션의 모든 이미지는 Lanea Zimmerman에 의해 작성되었습니다. [여기에서](http://opengameart.org/users/sharm) 그녀의 작품을 더 많이 찾을 수 있습니다. 감사합니다, Lanea!)
+
+그런 다음 Texture Packer를 열고 프레임 워크 유형으로 **JSON Hash**를 선택하십시오. 이미지를 Texture Packer의 작업 공간으로 드래그 하십시오. (Texture Packer가 이미지가 있는 폴더를 가리킬수도 있습니다.) 이미지는 자동으로 단일 tileset 이미지에 정렬되고 원래 이미지 이름과 일치하는 이름을 지정합니다.
+
+![Image files](/examples/images/screenshots/12.png)
+ 
+(무료 버전의 Texture Packer를 사용하는 경우, **Algorithm**을 basix으로 설정하고 **Trim mode**를 none으로 설정하고 **Extrude**를 0으로 설정하고 **Size constraints**을 Any size로 설정한 다음 **PNG Opt Level**을 왼쪽에서 0까지 끝까지 슬라이드 합니다. 이것은 무료 버전의 Texture Packer가 경고 나 오류없이 파일을 생성할 수 있게 해주는 기본 설정입니다.)
+
+완료되면 **Publish** 버튼을 클릭하십시오. 파일 이름과 위치를 선택하고 게시된 파일을 저장하십시오. PNG 파일과 JSON 파일의 두 파일로 끝납니다. 이 예제에서 내 파일 이름은 `treasureHunter.json` 및 `treasureHunter.png`입니다. 좀 더 편하게 하려면, 두 파일을 모두 프로젝트의 `image` 폴더에 보관하십시오. (JSON 파일은 이미지 파일의 추가 메타 데이터로 생각할 수 있으므로 두 파일을 같은 폴더에 보관하는 것이 좋습니다.) JSON 파일은 tileset 각각의 하위 이미지의 이름, 크기 및 위치를 설명합니다. 여기 얼룩 괴물의 하위 이미지를 설명하는 발췌 부분이 있습니다.
+
+```js
+
 "blob.png":
 {
 	"frame": {"x":55,"y":2,"w":32,"h":24},
@@ -1053,35 +1059,62 @@ Pixi는 [Texture Packer](https://www.codeandweb.com/texturepacker).라는 유명
 	"sourceSize": {"w":32,"h":24},
 	"pivot": {"x":0.5,"y":0.5}
 },
-treasureHunter.json 파일에는 유사한 데이터가 있는 "dungeon.png", "door.png", "exit.png" 및 "explorer.png" 속성도 포함되어 있습니다. 이러한 각 하위 이미지를 frames라고 합니다. 이 데이터를 가지고 있으면 tilset 각 하위 이미지의 크기와 위치를 알 필요가 없기 때문에 매우 유용합니다. 알아야 할 것은 sprite의 frame id뿐입니다. Frame id는 "blob.png"또는 "explorer.png"와 같은 원본 이미지 파일의 이름일 뿐입니다.
 
-텍스쳐 atlas를 사용하는 많은 장점 중 하나는 각 이미지 주위에 2 픽셀의 padding을 쉽게 추가 할 수 있다는 것입니다(Texturn Packer는 기본적으로 이 작업을 수행합니다.). 이것은 texture bleed의 가능성을 방지하기 위해 중요합니다. Texture bleed는 tileset의 인접한 이미지의 가장자리가 sprite옆에 나타날 때 발생하는 효과입니다. 이것은 컴퓨터의 GPU (Graphics Processing Unit)가 분수 픽셀 값을 반올림하는 방법을 결정하는 방식 때문에 발생합니다. 그것들을 반올림 해야할까요? 이것은 각 GPU마다 다를 것입니다. tilseset의 이미지 주위에 1 또는 2 픽셀의 간격을 두면 모든 이미지가 일관되게 표시됩니다.
+```
 
-(참고 : 그래픽 주위에 두 개의 픽셀 padding이 있고 Pixi가 표시하는 방식으로 이상한 "한 픽셀 씩" 결함이 계속 표시되는 경우, 텍스처의 눈금 모드 알고리즘을 변경해보십시오. 방법은 다음과 같습니다 : texture.baseTexture. scaleMode = PIXI.SCALE_MODES.NEAREST; 이러한 결함은 GPU 부동 소수점 올림 오류로 인해 때때로 발생할 수 있습니다.)
+`treasureHunter.json` 파일에는 유사한 데이터가 있는 "dungeon.png", "door.png", "exit.png" 및 "explorer.png" 속성도 포함되어 있습니다. 이러한 각 하위 이미지를 **frames**라고 합니다. 이 데이터를 가지고 있으면 tilset 각 하위 이미지의 크기와 위치를 알 필요가 없기 때문에 매우 유용합니다. 알아야 할 것은 sprite의 **frame id**뿐입니다. Frame id는 "blob.png"또는 "explorer.png"와 같은 원본 이미지 파일의 이름일 뿐입니다.
+
+텍스쳐 atlas를 사용하는 많은 장점 중 하나는 각 이미지 주위에 2 픽셀의 padding을 쉽게 추가 할 수 있다는 것입니다(Texturn Packer는 기본적으로 이 작업을 수행합니다.). 이것은 **texture bleed**의 가능성을 방지하기 위해 중요합니다. Texture bleed는 tileset의 인접한 이미지의 가장자리가 sprite옆에 나타날 때 발생하는 효과입니다. 이것은 컴퓨터의 GPU (Graphics Processing Unit)가 분수 픽셀 값을 반올림하는 방법을 결정하는 방식 때문에 발생합니다. 그것들을 반올림 해야할까요? 이것은 각 GPU마다 다를 것입니다. tilseset의 이미지 주위에 1 또는 2 픽셀의 간격을 두면 모든 이미지가 일관되게 표시됩니다.
+
+(참고 : 그래픽 주위에 두 개의 픽셀 padding이 있고 Pixi가 표시하는 방식으로 이상한 "한 픽셀 씩" 결함이 계속 표시되는 경우, 텍스처의 눈금 모드 알고리즘을 변경해보십시오. 방법은 다음과 같습니다 : `texture.baseTexture. scaleMode = PIXI.SCALE_MODES.NEAREST;` 이러한 결함은 GPU 부동 소수점 올림 오류로 인해 때때로 발생할 수 있습니다.)
 
 이제 텍스처 atlas를 만드는 방법을 알았으므로, 게임 코드에 텍스처를 로드하는 방법을 알아보겠습니다.
 
+<a id='loading-atlas'>
 텍스처 atlas 올리기
-텍스처 atlas를 Pixi로 가져 오려면 Pixi의 loader를 사용하여 로드하십시오. JSON 파일이 Texture Packer로 만들어진 경우, loader는 데이터를 해석하고 tileset의 각 프레임에서 텍스처를 자동으로 생성합니다. 다음은 loader를 사용하여 treasureHunter.json 파일을 로드하는 방법입니다. 로드가 완료되면 setup 기능이 실행됩니다.
+-----------------
+텍스처 atlas를 Pixi로 가져 오려면 Pixi의 `loader`를 사용하여 로드하십시오. JSON 파일이 Texture Packer로 만들어진 경우, `loader`는 데이터를 해석하고 tileset의 각 프레임에서 텍스처를 자동으로 생성합니다. 다음은 `loader`를 사용하여 `treasureHunter.json` 파일을 로드하는 방법입니다. 로드가 완료되면 `setup` 기능이 실행됩니다.
+
+```js
+
 loader
   .add("images/treasureHunter.json")
 .load(setup);
+
+```
+
 tileset의 각 이미지는 현재 Pixi의 비밀공간에 있는 개별 텍스처입니다. Texture Packer ( "blob.png", "dungeon.png", "explorer.png"등)와 동일한 이름으로 비밀 공간의 각 텍스처에 액세스 할 수 있습니다.
+
+<a id='creating-sprites-from-a-loaded-texture-atlas'>
 올려진 텍스처 atlas 로부터 sprites 만들기
+-------------------------------------
 Pixi는 텍스처 atlas에서 sprites를 만드는 세 가지 일반적인 방법을 제공합니다.
-1. TextureCache 사용 :
+1. `TextureCache` 사용 :
+```js
 let texture = TextureCache["frameId.png"],
     sprite = new Sprite(texture);
-2. Pixi loader를 사용하여 텍스처 atlas를 로드 한 경우 loader의 resources를 사용하십시오 :
+```
+2. Pixi `loader`를 사용하여 텍스처 atlas를 로드 한 경우 loader의 `resources`를 사용하십시오 :
+```js
 let sprite = new Sprite(
   resources["images/treasureHunter.json"].textures["frameId.png"]
 );
+```
+
 3. 그렇게하면 sprites를 만들기에는 너무 많은 타이핑이 필요합니다! 그래서 저는 다음과 같이 텍스쳐의 altas의 textures 객체를 가리키는 id라는 별칭을 만들 것을 제안합니다 :
+```js
 let id = PIXI.loader.resources["images/treasureHunter.json"].textures;
+```
 그러면 다음과 같이 각각의 새로운 sprites를 만들 수 있습니다.
+```js
 let sprite = new Sprite(id["frameId.png"]);
+```
+
 훨씬 낫다!
-dungeon, explorer 및 treasure sprites를 만들고 표시하기 위해 setup 기능에서 이 세 가지 다른 sprites 생성 기술을 사용하는 방법은 다음과 같습니다.
+
+`dungeon`, `explorer` 및 `treasure` sprites를 만들고 표시하기 위해 setup 기능에서 이 세 가지 다른 sprites 생성 기술을 사용하는 방법은 다음과 같습니다.
+```js
+
 //Define variables that might be used in more 
 //than one function
 let dungeon, explorer, treasure, id;
@@ -1118,13 +1151,25 @@ function setup() {
   treasure.y = app.stage.height / 2 - treasure.height / 2;
   app.stage.addChild(treasure);
 }
+
+```
+
 이 코드는 다음과 같습니다.
+
+![Explorer, dungeon and treasure](/examples/images/screenshots/13.png)
  
-stage 크기는 512 x 512 픽셀이며 위 코드에서 app.stage.height 및 app.stage.width 속성을 사용하여 sprites를 정렬하는 방법을 볼 수 있습니다. explorer의 y 위치가 세로로 가운데에 배치되는 방법은 다음과 같습니다.
+stage 크기는 512 x 512 픽셀이며 위 코드에서 `app.stage.height` 및 `app.stage.width` 속성을 사용하여 sprites를 정렬하는 방법을 볼 수 있습니다. `explorer`의 `y` 위치가 세로로 가운데에 배치되는 방법은 다음과 같습니다.
+
+```js
 explorer.y = app.stage.height / 2 - explorer.height / 2;
-텍스처 atlas를 사용하여 sprites를 생성하고 표시하는 것은 중요한 벤치 마크입니다. 따라서 계속하기 전에 남아있는 sprites를 추가하기 위해 작성할 수 있는 코드 인 blob과 exit 문을 살펴보고 다음과 같은 장면을 생성 할 수 있습니다.
+```
+
+텍스처 atlas를 사용하여 sprites를 생성하고 표시하는 것은 중요한 벤치 마크입니다. 따라서 계속하기 전에 남아있는 sprites를 추가하기 위해 작성할 수 있는 코드 인 `blob`과 `exit` 문을 살펴보고 다음과 같은 장면을 생성 할 수 있습니다.
+
+![All the texture atlas sprites](/examples/images/screenshots/14.png)
  
-이 모든 것을 수행하는 전체 코드가 있습니다. HTML 코드가 포함되어 있으므로 모든 것을 적절한 상황에서 볼 수 있습니다. 이 작업 코드는 이 저장소의 examples/ spriteFromTextureAtlas.html 파일에서 찾을 수 있습니다. blob sprites가 생성되어 루프의 스테이지에 추가되고 임의의 위치가 지정됩니다.
+이 모든 것을 수행하는 전체 코드가 있습니다. HTML 코드가 포함되어 있으므로 모든 것을 적절한 상황에서 볼 수 있습니다. (이 작업 코드는 이 저장소의 `examples/ spriteFromTextureAtlas.html` 파일에서 찾을 수 있습니다.) `blob` sprites가 생성되어 루프의 스테이지에 추가되고 임의의 위치가 지정됩니다.
+```js
 <!doctype html>
 <meta charset="utf-8">
 <title>Make a sprite from a texture atlas</title>
@@ -1236,25 +1281,53 @@ function randomInt(min, max) {
 
 </script>
 </body>
-위의 코드에서 볼 수 있듯이 모든 blob은 for 루프를 사용하여 만듭니다. 각 blob은 다음과 같이 x 축을 따라 균등하게 배치됩니다 :
+```
 
+위의 코드에서 볼 수 있듯이 모든 blob은 `for` 루프를 사용하여 만듭니다. 각 `blob`은 다음과 같이 `x` 축을 따라 균등하게 배치됩니다 :
+
+```js
 let x = spacing * i + xOffset;
-blob.x = x; 
-spacing 값은 48이고 xOffset 값은 150입니다. 첫 번째 blob의 x 위치는 150입니다. 이 값은 stage의 왼쪽에서 150 픽셀만큼 오프셋됩니다. 각 후속 blob은 루프의 이전 반복에서 생성 된 blob보다 48 픽셀 큰 x 값을 가집니다. 이것은 지하 감옥 바닥을 따라 왼쪽에서 오른쪽으로 똑같이 간격을 둔 blob 몬스터 라인을 만듭니다.
-각 blob에는 임의의 y 위치가 주어집니다. 이 작업을 수행하는 코드는 다음과 같습니다 :
+blob.x = x;
+```
+
+`spacing` 값은 48이고 `xOffset` 값은 150입니다. 첫 번째 `blob`의 `x` 위치는 150입니다. 이 값은 stage의 왼쪽에서 150 픽셀만큼 오프셋됩니다. 각 후속 `blob`은 루프의 이전 반복에서 생성 된 `blob`보다 48 픽셀 큰 `x` 값을 가집니다. 이것은 지하 감옥 바닥을 따라 왼쪽에서 오른쪽으로 똑같이 간격을 둔 blob 몬스터 라인을 만듭니다.
+
+각 `blob`에는 임의의 `y` 위치가 주어집니다. 이 작업을 수행하는 코드는 다음과 같습니다:
+
+```js
 let y = randomInt(0, stage.height - blob.height);
 blob.y = y;
-blob의 y 위치에는 0과 512 사이의 임의의 난수를 할당 할 수 있습니다.이 난수는 stage.height의 값입니다. 이 함수는 randomInt라는 사용자 정의 함수를 사용하여 작동합니다. randomInt는 임의의 두 숫자 사이의 범위에 있는 임의의 숫자를 반환합니다.
+```
+
+`blob`의 `y` 위치에는 0과 512 사이의 임의의 난수를 할당 할 수 있습니다.이 난수는 `stage.height`의 값입니다. 이 함수는 `randomInt`라는 사용자 정의 함수를 사용하여 작동합니다. `randomInt`는 임의의 두 숫자 사이의 범위에 있는 임의의 숫자를 반환합니다.
+
+```js
 randomInt(lowestNumber, highestNumber)
-즉, 1과 10 사이의 임의의 숫자를 원하면 다음과 같은 값을 얻을 수 있습니다 :
+```
+
+즉, 1과 10 사이의 임의의 숫자를 원하면 다음과 같은 값을 얻을 수 있습니다:
+
+```js
 let randomNumber = randomInt(1, 10);
-다음은 이 모든 작업을 수행하는 randomInt 함수 정의입니다.
+```
+
+다음은 이 모든 작업을 수행하는 `randomInt` 함수 정의입니다.
+
+```js
 function randomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-randomInt는 게임을 만들기 위한 뒷 주머니에 보관할 수 있는 아주 작은 기능입니다. 항상 사용합니다.
+```
+
+`randomInt`는 게임을 만들기 위한 뒷 주머니에 보관할 수 있는 아주 작은 기능입니다. 항상 사용합니다.
+
+<a id='moving-sprites'>
 sprites 움직이기
-이제 sprites를 표시하는 방법을 알았지만 sprites를 어떻게 움직이게 할까요? 간단합니다 : Pixi 's ticker를 사용하여 루핑 기능 만들기. 게임 루프라고 합니다. 게임 루프 안에 넣은 코드는 초당 60 회 업데이트됩니다. 다음은 고양이 sprites가 프레임 당 1 픽셀의 비율로 오른쪽으로 이동하도록 작성하는 코드입니다.
+---------------
+
+이제 sprites를 표시하는 방법을 알았지만 sprites를 어떻게 움직이게 할까요? 간단합니다 : Pixi 's `ticker`를 사용하여 루핑 기능 만들기. **game loop**라고 합니다. 게임 루프 안에 넣은 코드는 초당 60 회 업데이트됩니다. 다음은 'cat' sprites가 프레임 당 1 픽셀의 비율로 오른쪽으로 이동하도록 작성하는 코드입니다.
+
+```js
 function setup() {
 
   //Start the game loop by adding the `gameLoop` function to
@@ -1267,16 +1340,31 @@ function gameLoop(delta){
   //Move the cat 1 pixel 
   cat.x += 1;
 }
+```
+
 이 코드를 실행하면 sprites가 점차 stage의 오른쪽으로 이동하는 것을 볼 수 있습니다.
+
+![Moving sprites](/examples/images/screenshots/15.png)
  
 그것은 gameLoop이 실행될 때마다 고양이의 x 위치에 1을 더하기 때문입니다.
-cat.x += 1;
 
-Pixi의 ticker에 추가하는 기능은 초당 60 회 호출됩니다. 함수에 델타 인수가 있음을 알 수 있습니다 - 그게 뭘까요?
-델타 값은 프레임 간의 부분 지연의 양을 나타냅니다. 고양이의 애니메이션을 프레임 속도와 독립적으로 만들기 위해 고양이의 위치에 선택적으로 추가 할 수 있습니다. 방법은 다음과 같습니다 :
+```
+cat.x += 1;
+```
+
+Pixi의 `ticker`에 추가하는 기능은 초당 60 회 호출됩니다. 함수에 `delta` 인수가 있음을 알 수 있습니다 - 그게 뭘까요?
+
+`delta` 값은 프레임 간의 부분 지연의 양을 나타냅니다. 고양이의 애니메이션을 프레임 속도와 독립적으로 만들기 위해 고양이의 위치에 선택적으로 추가 할 수 있습니다. 방법은 다음과 같습니다 :
+
+```js
 cat.x += 1 + delta;
-이 델타 값을 추가할지 여부는 주로 미학적인 선택입니다. 그리고 효과는 애니메이션이 초당 60 프레임의 일관된 디스플레이 속도 (예 : 느린 장치에서 실행되는 경우)에서 계속 고생하려고 애쓰는 경우에만 눈에 띄게 됩니다. 이 튜토리얼의 나머지 예제는 이 델타 값을 사용하지 않지만 원하는 경우 자유롭게 사용할 수 있습니다.
-Pixi의 티커를 사용하여 게임 루프를 만들 필요가 없습니다. 원하는 경우 requestAnimationFrame을 다음과 같이 사용하십시오 :
+```
+
+이 `delta` 값을 추가할지 여부는 주로 미학적인 선택입니다. 그리고 효과는 애니메이션이 초당 60 프레임의 일관된 디스플레이 속도 (예 : 느린 장치에서 실행되는 경우)에서 계속 고생하려고 애쓰는 경우에만 눈에 띄게 됩니다. 이 튜토리얼의 나머지 예제는 이 `delta` 값을 사용하지 않지만 원하는 경우 자유롭게 사용할 수 있습니다.
+
+Pixi의 티커를 사용하여 게임 루프를 만들 필요가 없습니다. 원하는 경우 `requestAnimationFrame`을 다음과 같이 사용하십시오 :
+
+```js
 function gameLoop() {
 
   //Call this `gameLoop` function on the next screen refresh
@@ -1289,10 +1377,15 @@ function gameLoop() {
 
 //Start the loop
 gameLoop();
+```
 
 당신이 선호하는 스타일은 전적으로 당신에게 달려 있습니다.
-그리고 그게 전부입니다! 루프 내에서 작은 sprites 속성을 조금씩 변경하면 시간이 지남에 따라 애니메이션이 적용됩니다. sprites를 반대 방향 (왼쪽)으로 애니메이트하려면 -1과 같이 음수 값을 지정하십시오.
-이 코드는 movingSprites.html 파일에서 찾을 수 있습니다. 여기에 전체 코드가 있습니다 :
+
+그리고 그게 전부입니다! 루프 내에서 작은 sprites 속성을 조금씩 변경하면 시간이 지남에 따라 애니메이션이 적용됩니다. sprites를 반대 방향 (왼쪽)으로 애니메이트하려면 `-1`과 같이 음수 값을 지정하십시오.
+
+이 코드는 `movingSprites.html` 파일에서 찾을 수 있습니다. 여기에 전체 코드가 있습니다 :
+
+```js
 //Aliases
 let Application = PIXI.Application,
     Container = PIXI.Container,
@@ -1341,15 +1434,30 @@ function gameLoop(delta){
   //Optionally use the `delta` value
   //cat.x += 1 + delta;
 }
-cat 변수는 setup 및 gameLoop 함수 외부에서 정의 되어야만 양쪽 모두에서 액세스 할 수 있습니다.
+```
+
+(`cat` 변수는 `setup` 및 `gameLoop` 함수 외부에서 정의 되어야만 양쪽 모두에서 액세스 할 수 있습니다.)
+
 sprites의 크기, 회전 또는 크기를 애니메이트 할 수 있습니다. sprites를 미리 애니메이션 화하는 방법에 대한 더 많은 예제가 있습니다.
+
+<a id='velocity'></a>
 속도의 속성 사용하기
-유연성을 높이려면 vx와 vy라는 두 가지 속도 속성을 사용하여 sprites의 이동 속도를 제어하는 것이 좋습니다. vx는 sprites의 속도와 방향을 x 축 (수평 방향)으로 설정하는데 사용됩니다. vy는 sprites의 속도와 방향을 y 축 (수직)으로 설정하는 데 사용됩니다. sprites의 x와 y 값을 직접 변경하는 대신 먼저 속도 변수를 업데이트 한 다음 해당 속도 값을 sprites에 할당하십시오. 이것은 인터랙티브 게임 애니메이션에 필요한 모듈성의 추가 비트입니다.
-첫 번째 단계는 sprites에 vx 및 vy 속성을 만들고 초기 값을 지정하는 것입니다.
+-----------------
+
+유연성을 높이려면 `vx`와 `vy`라는 두 가지 **velocity properties**을 사용하여 sprites의 이동 속도를 제어하는 것이 좋습니다: `vx`는 sprites의 속도와 방향을 x 축 (수평 방향)으로 설정하는데 사용됩니다. `vy`는 sprites의 속도와 방향을 y 축 (수직)으로 설정하는 데 사용됩니다. sprites의 `x`와 `y` 값을 직접 변경하는 대신 먼저 속도 변수를 업데이트 한 다음 해당 속도 값을 sprites에 할당하십시오. 이것은 인터랙티브 게임 애니메이션에 필요한 모듈성의 추가 비트입니다.
+
+첫 번째 단계는 sprites에 `vx` 및 `vy` 속성을 만들고 초기 값을 지정하는 것입니다.
+
+```js
 cat.vx = 0;
 cat.vy = 0;
-vx와 vy를 0으로 설정하면 sprites가 움직이지 않는다는 의미입니다.
-그런 다음 게임 루프에서 vx와 vy를 sprites가 이동할 속도로 업데이트하십시오. 그런 다음 해당 값을 sprites의 x 및 y 속성에 할당합니다. 다음은 이 기술을 사용하여 각 프레임마다 한 픽셀 씩 고양이 sprites를 아래쪽에서 오른쪽으로 움직이는 방법입니다.
+```
+
+`vx`와 `vy`를 0으로 설정하면 sprites가 움직이지 않는다는 의미입니다.
+
+그런 다음 게임 루프에서 `vx`와 `vy`를 sprites가 이동할 속도로 업데이트하십시오. 그런 다음 해당 값을 sprites의 `x` 및 `y` 속성에 할당합니다. 다음은 이 기술을 사용하여 각 프레임마다 한 픽셀 씩 고양이 sprites를 아래쪽에서 오른쪽으로 움직이는 방법입니다:
+
+```js
 function setup() {
 
   //Create the `cat` sprite 
@@ -1374,13 +1482,23 @@ function gameLoop(delta){
   cat.x += cat.vx;
   cat.y += cat.vy;
 }
+```
 
-이 코드를 실행하면 고양이가 프레임 당 한 픽셀씩 오른쪽 아래로 이동합니다.
- 
-고양이가 다른 방향으로 움직이게 하려면 어떨까요? 고양이를 왼쪽으로 이동하려면 vx 값을 -1로 지정하십시오. 그것을 위로 움직이려면 고양이에게 -1의 값을 부여하십시오. 고양이가 더 빠르게 움직이게 하려면 3, 5, -2 또는 -4와 같이 더 큰 vx 및 vy 값을 지정하십시오.
-vx 및 vy 속도 속성을 사용하여 sprites의 속도를 모듈화하는 방법을 통해 게임의 키보드 및 마우스 포인터 제어 시스템을 비롯하여 물리를 보다 쉽게 구현할 수 있습니다.
+이 코드를 실행하면 고양이가 프레임 당 한 픽셀씩 오른쪽 아래로 이동합니다:
+
+![Moving sprites](/examples/images/screenshots/16.png)
+
+고양이가 다른 방향으로 움직이게 하려면 어떨까요? 고양이를 왼쪽으로 이동하려면 `vx` 값을 `-1`로 지정하십시오. 그것을 위로 움직이려면 고양이에게 `-1`의 값을 부여하십시오. 고양이가 더 빠르게 움직이게 하려면 `3`, `5`, `-2` 또는 `-4`와 같이 더 큰 `vx` 및 `vy` 값을 지정하십시오.
+
+`vx` 및 `vy` 속도 속성을 사용하여 sprites의 속도를 모듈화하는 방법을 통해 게임의 키보드 및 마우스 포인터 제어 시스템을 비롯하여 물리를 보다 쉽게 구현할 수 있습니다.
+
+<a id='game-states'></a>
 게임 상태
+--------
+
 스타일의 문제로서 코드를 모듈화하는 데 도움이 되도록 다음과 같이 게임 루프를 구조화하는 것이 좋습니다 :
+
+```js
 //Set the game state
 state = play;
  
@@ -1399,8 +1517,13 @@ function play(delta) {
   cat.vx = 1
   cat.x += cat.vx;
 }
-gameLoop이 state라는 함수를 초당 60 회 호출하고 있음을 알 수 있습니다. state함수란 무엇입니까? paly에 배정되었습니다. 즉, play함수의 모든 코드도 초당 60 회 실행됩니다.
-다음은 이전 예제의 코드를 이 새 모델에 다시 적용하는 방법입니다 : 
+```
+
+`gameLoop`이 `state`라는 함수를 초당 60 회 호출하고 있음을 알 수 있습니다. `state`함수란 무엇입니까? `play`에 배정되었습니다. 즉, `play`함수의 모든 코드도 초당 60 회 실행됩니다.
+
+다음은 이전 예제의 코드를 이 새 모델에 다시 적용하는 방법입니다 :
+
+```js
 //Define any variables that are used in more than one function
 let cat, state;
 
@@ -1432,11 +1555,17 @@ function play(delta) {
   cat.vx = 1
   cat.x += cat.vx;
 }
-그래, 저도 알아요,이 머리 - 소용돌이의 비트입니다! 그러나 두려워하지 말고 그 기능들이 어떻게 연결되어 있는지 1, 2 분간 마음 속으로 보냅니다. 앞서 살펴 보았듯이 게임 루프를 이렇게 구성하면 게임 장면과 레벨을 전환하는 것과 같은 일을 훨씬 더 쉽게 수행 할 수 있습니다.
+```
 
+그래, 저도 알아요, 이것은 약간 [head-swirler](http://www.amazon.com/Electric-Psychedelic-Sitar-Headswirlers-1-5/dp/B004HZ14VS)이다! 그러나 두려워하지 말고 그 기능들이 어떻게 연결되어 있는지 1, 2 분간 마음 속으로 보냅니다. 앞서 살펴 보았듯이 게임 루프를 이렇게 구성하면 게임 장면과 레벨을 전환하는 것과 같은 일을 훨씬 더 쉽게 수행 할 수 있습니다.
+
+<a id='keyboard'></a>
 키보드 움직임
+-----------
 
-조금 더 작업을 하면 키보드를 사용하여 sprite를 제어하는 간단한 시스템을 구축할 수 있습니다. 코드를 단순화하기 위해 키보드 이벤트를 청취하고 캡처하는 keyboard라는 사용자 지정 함수를 사용하는 것이 좋습니다.
+조금 더 작업을 하면 키보드를 사용하여 sprite를 제어하는 간단한 시스템을 구축할 수 있습니다. 코드를 단순화하기 위해 키보드 이벤트를 청취하고 캡처하는 `keyboard`라는 사용자 지정 함수를 사용하는 것이 좋습니다.
+
+```js
 function keyboard(value) {
   let key = {};
   key.value = value;
@@ -1483,23 +1612,43 @@ function keyboard(value) {
   
   return key;
 }
+```
+
 keyboard 기능은 사용하기 쉽습니다. 다음과 같이 새 키보드 객체를 만듭니다.
+
+```js
 let keyObject = keyboard(keyValue);
-하나의 인수는 당신이 듣고 싶어하는 핵심적인 가치입니다. 다음은 키 목록입니다.
-그런 다음 키보드 개체에 다음과 같이 press 및 release 메서드를 할당합니다.
+```
+
+하나의 인수는 당신이 듣고 싶어하는 핵심적인 가치입니다. 다음은 [key 목록입니다.](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values).
+
+그런 다음 키보드 개체에 다음과 같이 `press` 및 `release` 메서드를 할당합니다.
+
+```js
 keyObject.press = () => {
   //key object pressed
 };
 keyObject.release = () => {
   //key object released
 };
-키보드 객체에는 각 키의 상태를 확인하는 데 사용할 수 있는 isDown 및 isUp Boolean 속성도 있습니다.
-unsubscribe 메서드를 사용하여 이벤트 리스너를 제거하는 것을 잊지 마세요.
-keyObject.unsubscribe();
+```
 
-키보드의 화살표 키를 사용하여 어떻게 이 keyboard 기능을 사용하는지에 대한 sprite 제어 방법을 보려면 examples 폴더의 keyboardMovement.html 파일을 살펴보십시오. 그것을 실행하고 왼쪽, 위, 아래 및 오른쪽 화살표 키를 사용하여 무대 주변 고양이를 이동하십시오.
- 
+키보드 객체에는 각 키의 상태를 확인하는 데 사용할 수 있는 `isDown` 및 `isUp` Boolean 속성도 있습니다.
+
+`unsubscribe` 메서드를 사용하여 이벤트 리스너를 제거하는 것을 잊지 마세요.
+
+```js
+keyObject.unsubscribe();
+```
+
+키보드의 화살표 키를 사용하여 어떻게 이 `keyboard` 기능을 사용하는지에 대한 sprite 제어 방법을 보려면 `examples` 폴더의 `keyboardMovement.html` 파일을 살펴보십시오. 그것을 실행하고 왼쪽, 위, 아래 및 오른쪽 화살표 키를 사용하여 무대 주변 고양이를 이동하십시오.
+
+![Keyboard movement](/examples/images/screenshots/17.png)
+
 다음은 이 모든 작업을 수행하는 코드입니다.
+
+```js
+
 //Define any variables that are used in more than one function
 let cat, state;
 
@@ -1588,9 +1737,17 @@ function play(delta) {
   cat.y += cat.vy
 }
 
+```
+
+<a id='grouping'></a>
 Sprites 그룹화하기
-그룹화를 하면 게임 장면을 생성하고 유사한 Sprites를 단일 단위로 관리할 수 있습니다. 픽시는 이것을 할 수 있게 해주는 Container라는 객체를 가지고 있습니다. 어떻게 작동하는지 알아봅시다.
-고양이, 고슴도치, 호랑이의 세 가지 Sprites를 보여주고 싶다고 상상해 보세요. 그것들을 만들고, 그들의 위치를 정하세요 - 그러나 그것들을 Stage에 추가하지 마세요.
+-----------------
+
+그룹화를 하면 게임 장면을 생성하고 유사한 Sprites를 단일 단위로 관리할 수 있습니다. 픽시는 이것을 할 수 있게 해주는 `Container` 라는 객체를 가지고 있습니다. 어떻게 작동하는지 알아봅시다.
+
+고양이, 고슴도치, 호랑이의 세 가지 Sprites를 보여주고 싶다고 상상해 보세요. 그것들을 만들고, 그들의 위치를 정하세요 - *그러나 그것들을 Stage에 추가하지 마세요*.
+
+```js
 
 //The cat
 let cat = new Sprite(id["cat.png"]);
@@ -1604,86 +1761,177 @@ hedgehog.position.set(32, 32);
 let tiger = new Sprite(id["tiger.png"]);
 tiger.position.set(64, 64);
 
-다음으로, 동물 Container를 만들어 그들을 모두 다음과 같이 묶으세요.
+```
+
+다음으로, 동물 Container를 만들어 그들을 모두 다음과 같이 묶으세요:
+
+```js
+
 let animals = new PIXI.Container();
-그런 다음 addChild를 사용하여 그룹에 Sprites를 추가하세요.
+
+```
+
+그런 다음 'addChild'를 사용하여 *그룹에 Sprites를 추가하세요*.
+
+```js
+
 animals.addChild(cat);
 animals.addChild(hedgehog);
 animals.addChild(tiger);
+
+```
+
 마지막으로 그룹을 stage에 추가하세요.
+
+```js
+
 app.stage.addChild(animals);
-(아시는 바와 같이 stage 객체도 저장소 입니다. 모든 픽시 Sprites의 root Container 입니다.)
+
+```
+
+(아시는 바와 같이 `stage` 객체도 `container`입니다. 모든 픽시 Sprites의 root Container 입니다.)
+
 이 코드로 인해 얻을 수 있는 것은 다음과 같습니다. 
+
+![Grouping sprites](/examples/images/screenshots/18.png)
  
-그 그림에서 볼 수 없는 것은 sprites를 포함하고 있는 보이지 않는 동물 그룹입니다.
+그 그림에서 볼 수 없는 것은 sprites를 포함하고 있는 보이지 않는 `animals` 그룹입니다.
+
+![Grouping sprites](/examples/images/screenshots/19.png)
  
-당신은 이제 animals 그룹을 단일 단위로 취급할 수 있습니다. Container는 텍스쳐가 없는 특별한 종류의 sprites로 생각할 수 있습니다.
-animals가 포함하고 있는 모든 child Sprites 목록이 필요한 경우, children 배열을 사용하여 확인하세요.
+당신은 이제 `animals` 그룹을 단일 단위로 취급할 수 있습니다. `Container`는 텍스쳐가 없는 특별한 종류의 sprites로 생각할 수 있습니다.
+
+`animals`가 포함하고 있는 모든 child Sprites 목록이 필요한 경우, `children` 배열을 사용하여 확인하세요.
+
+```
 console.log(animals.children)
 //Displays: Array [Object, Object, Object]
+```
 
-이것은 animals가 children배열에서 3개의 sprites를 가지고 있다는 것을 말해줍니다.
-animals 그룹은 다른 sprites와 똑같기 때문에 x와 y 값, 알파, 척도 및 다른 모든 sprites 특성을 변경할 수 있습니다. 상위 Container에서 변경하는 속성 값은 상대적인 방식으로 하위 sprites에 영향을 미칩니다. 따라서 그룹의 x와 y 위치를 설정하면 모든 하위 sprites가 그룹의 왼쪽 상단 모서리에 비례하여 재배치됩니다. 동물의 x와 y 위치를 64로 설정하면 어떻게 될까요?
+이것은 `animals`가 children배열에서 3개의 sprites를 가지고 있다는 것을 말해줍니다.
+
+animals 그룹은 다른 sprites와 똑같기 때문에 `x`와 `y` 값, `alpha`, `scale` 및 다른 모든 sprites 특성을 변경할 수 있습니다. 상위 Container에서 변경하는 속성 값은 상대적인 방식으로 하위 sprites에 영향을 미칩니다. 따라서 그룹의 `x`와 `y` 위치를 설정하면 모든 하위 sprites가 그룹의 왼쪽 상단 모서리에 비례하여 재배치됩니다. 동물의 `x`와 `y` 위치를 64로 설정하면 어떻게 될까요?
+
+```
 animals.position.set(64, 64);
+```
 
 전체 sprites 그룹은 오른쪽으로 64픽셀, 아래로 64픽셀 이동합니다.
  
-animals 그룹도 나름대로의 크기를 가지고 있는데, 이 크기는 포함된 sprites가 점유하는 면적에 기초하고 있습니다. 너비와 높이 값은 다음과 같습니다.
+![Grouping sprites](/examples/images/screenshots/20.png)
+
+`animals` 그룹도 나름대로의 크기를 가지고 있는데, 이 크기는 포함된 sprites가 점유하는 면적에 기초하고 있습니다. `width`와 `height` 값은 다음과 같습니다.
+
+```js
 console.log(animals.width);
 //Displays: 112
 
 console.log(animals.height);
 //Displays: 112
+```
 
+![Group width and height](/examples/images/screenshots/21.png)
  
 그룹의 너비나 높이를 변경하면 어떻게 될까요?
+```js
 animals.width = 200;
 animals.height = 200;
+```
+
 모든 child sprites는 그 변화에 맞춰 확장될 것입니다.
+
+![Group width and height](/examples/images/screenshots/22.png)
  
-필요한 경우 다른 Container에 원하는 만큼의 Container를 배치하여 깊은 계층 구조를 만들 수 있습니다. 그러나 Display Object(예: Sprite 또는 다른 Container)는 한 번에 한 상위에만 속할 수 있습니다. sprites를 다른 객체의 아이로 만들기 위해 addChild를 사용하면 픽시는 현재 부모에서 sprites를 자동으로 제거합니다. 그것은 당신이 걱정할 필요가 없는 유용한 경영입니다.
-지역적 및 전반적 위치
-Container에 sprites를 추가할 때, Container의 x와 y 위치는 그룹의 왼쪽 상단 모서리에 상대적입니다. 그게 sprites의 현지 위치인데 예를 들면 이 이미지에서는 cat의 위치가 뭐라고 보십니까?
- 
+필요한 경우 다른 `Container`에 원하는 만큼의 `Container`를 배치하여 깊은 계층 구조를 만들 수 있습니다. 그러나 `Display Object`(예: `Sprite` 또는 다른 `Container`)는 한 번에 한 상위에만 속할 수 있습니다. sprites를 다른 객체의 아이로 만들기 위해 `addChild`를 사용하면 픽시는 현재 부모에서 sprites를 자동으로 제거합니다. 그것은 당신이 걱정할 필요가 없는 유용한 경영입니다.
+
+### 지역적 및 전반적 위치
+
+`Container`에 sprites를 추가할 때, `Container`의 `x`와 `y`위치는 *그룹의 왼쪽 상단 모서리에 상대적입니다*. 그게 sprites의 **local position**인데 예를 들면 이 이미지에서는 cat의 위치가 뭐라고 보십니까?
+
+![Grouping sprites](/examples/images/screenshots/20.png)
+
 알아봅시다:
+
+```
 console.log(cat.x);
 //Displays: 16
+```
 
 16? 맞아요! Cat이 그룹의 왼쪽 상단 모서리에서 16개 픽셀만 상쇄되기 때문입니다. 16은 cat의 local position입니다.
-Sprites는 global positon도 가지고 있습니다. Global position은 stage 상단 왼쪽 코너에서 sprites의 앵커 포인트(일반적으로 sprite의 상단 왼쪽 코너)까지의 거리입니다. 당신은 ToGlobal 메서드의 도움으로 sprites 의 global positon을 찾을 수 있습니다. 그 방법은 다음과 같습니다.
+
+Sprites는 **global positon**도 가지고 있습니다. Global position은 stage 상단 왼쪽 코너에서 sprites의 앵커 포인트(일반적으로 sprite의 상단 왼쪽 코너)까지의 거리입니다. 당신은 `toGlobal` 메서드의 도움으로 sprites 의 global positon을 찾을 수 있습니다. 그 방법은 다음과 같습니다:
+
+```
 parentSprite.toGlobal(childSprite.position)
-이것은 여러분이 다음과 같은 animlas 그룹 안에서 cat의 global position을 찾을 수 있다는 것을 의미합니다.
+```
+
+이것은 여러분이 다음과 같은 `animals` 그룹 안에서 cat의 global position을 찾을 수 있다는 것을 의미합니다.
+
+```
 console.log(animals.toGlobal(cat.position));
 //Displays: Object {x: 80, y: 80...};
+```
 
-그것은 당신에게 80의 x와 y의 위치를 줍니다. 그것이 바로 stage 왼쪽 상단 모서리에 상대적인 cat의 global position입니다.
-sprites의 global position을 찾으려고 하지만 sprites의 부모 Container가 무엇인지 모른다면? 모든 sprites는 sprites의 부모가 무엇인지 말해줄 parent라는 속성을 가지고 있습니다. sprites를 stage에 직접 추가하면 stage가 sprites의 부모가 됩니다. 위의 예에서 cat의 부모는 animals입니다. 즉, 다음과 같은 코드를 작성함으로써 cat의 global position을 얻을 수 있다는 것입니다. 
+그것은 당신에게 80의 `x`와 `y`의 위치를 줍니다. 그것이 바로 stage 왼쪽 상단 모서리에 상대적인 cat의 global position입니다.
+
+sprites의 global position을 찾으려고 하지만 sprites의 부모 Container가 무엇인지 모른다면? 모든 sprites는 sprites의 부모가 무엇인지 말해줄 `parent`라는 속성을 가지고 있습니다. sprites를 `stage`에 직접 추가하면 `stage`가 sprites의 부모가 됩니다. 위의 예에서 `cat`의 부모는 `animals`입니다. 즉, 다음과 같은 코드를 작성함으로써 cat의 global position을 얻을 수 있다는 것입니다:
+
+```
 cat.parent.toGlobal(cat.position);
+```
 
-그리고 현재 cat의 부모 Container가 무엇인지 모르더라도 효과가 있을 것입니다.
-global position을 계산할 수 있는 방법이 하나 더 있습니다! 그리고, 사실 이것이 가장 좋은 방법입니다, 그러니 잘 들으세요! 캔버스의 왼쪽 상단 모서리에서 sprites까지의 거리를 알고 sprites의 부모 Container가 무엇인지 모르거나 상관하지 않으려면 getGlobalPosition 방법을 사용하세요. tiger의 global position을 찾기 위해 이것을 사용하는 방법은 다음과 같습니다.
+그리고 현재 cat의 부모 container가 무엇인지 모르더라도 효과가 있을 것입니다.
+
+global position을 계산할 수 있는 방법이 하나 더 있습니다! 그리고, 사실 이것이 가장 좋은 방법입니다, 그러니 잘 들으세요! 캔버스의 왼쪽 상단 모서리에서 sprites까지의 거리를 알고 sprites의 부모 Container가 무엇인지 모르거나 상관하지 않으려면 `getGlobalPosition` 방법을 사용하세요. tiger의 global position을 찾기 위해 이것을 사용하는 방법은 다음과 같습니다.
+
+```js
 tiger.getGlobalPosition().x
 tiger.getGlobalPosition().y
-이것은 우리가 사용한 예에서 128의 x와 y 값을 당신에게 줄 것입니다. getGlobalPosition의 특별한 점은 매우 정밀하다는 것입니다: 그것은 sprites의 local position이 바뀌는 즉시 당신에게 정확한 global position을 줄 것이다. 나는 게임의 정확한 충돌 탐지를 위해 특별히 이 기능을 추가해 달라고 픽시 개발 팀에 요청했습니다. (매트를 비롯한 나머지 팀원들 모두 고마워!)
-global position을 local position으로 전환하려면 어떻게 하시겠습니까? toLocal 방법을 사용할 수 있습니다. 유사한 방식으로 작동하지만 다음과 같은 일반적인 형식을 사용합니다.
+```
+
+이것은 우리가 사용한 예에서 128의 `x`와 `y` 값을 당신에게 줄 것입니다. `getGlobalPosition`의 특별한 점은 매우 정밀하다는 것입니다: 그것은 sprites의 local position이 바뀌는 즉시 당신에게 정확한 global position을 줄 것이다. 나는 게임의 정확한 충돌 탐지를 위해 특별히 이 기능을 추가해 달라고 픽시 개발 팀에 요청했습니다. (매트를 비롯한 나머지 팀원들 모두 고마워!)
+
+global position을 local position으로 전환하려면 어떻게 하시겠습니까? `toLocal` 방법을 사용할 수 있습니다. 유사한 방식으로 작동하지만 다음과 같은 일반적인 형식을 사용합니다.
+
+```js
 sprite.toLocal(sprite.position, anyOtherSprite)
+```
 
-sprites와 다른 sprites의 거리를 찾으려면 toLocal을 사용하세요. hedgehog에 비해 tiger의 local position을 알 수 있는 방법은 다음과 같습니다.
+sprites와 다른 sprites의 거리를 찾으려면 `toLocal`을 사용하세요. hedgehog에 비해 tiger의 local position을 알 수 있는 방법은 다음과 같습니다.
 
+```js
 tiger.toLocal(tiger.position, hedgehog).x1
 tiger.toLocal(tiger.position, hedgehog).y
+```
 
-이것은 당신에게 32의 x 값과 32의 y 값을 줍니다. tiger 왼쪽 위 모서리가 32픽셀 아래로 내려가 hedgehog 왼쪽 위 모서리에 있다는 것을 예시 이미지를 통해 알 수 있습니다.
-ParticleContainer 를 사용하여 sprite 그룹화하기
-픽시는 ParticleContainer(PIXI.particles.particleContainer)라고 불리는 sprites를 그룹화하는 대안적인, 고성능 방법을 가지고 있습니다. ParticleContainer 내부의 sprites는 일반 Container에 있을 때보다 2배에서 5배 더 빠르게 만들 것입니다. 그것은 게임을 위한 훌륭한 기능 향상입니다.
-다음과 같이 ParticleContainer 생성하기:
+이것은 당신에게 32의 `x`값과 32의 `y` 값을 줍니다. tiger 왼쪽 위 모서리가 32픽셀 아래로 내려가 hedgehog 왼쪽 위 모서리에 있다는 것을 예시 이미지를 통해 알 수 있습니다.
+
+
+### ParticleContainer 를 사용하여 sprite 그룹화하기
+
+Pixi는 `ParticleContainer`(`PIXI.particles.particleContainer`)라고 불리는 sprites를 그룹화하는 대안적인, 고성능 방법을 가지고 있습니다. `ParticleContainer` 내부의 sprites는 일반 `Container`에 있을 때보다 2배에서 5배 더 빠르게 만들 것입니다. 그것은 게임을 위한 훌륭한 기능 향상입니다.
+
+다음과 같이 `ParticleContainer` 생성하기:
+
+```js
 let superFastSprites = new PIXI.particles.ParticleContainer();
-그런 다음 일반 Container에서와 마찬가지로 AddChild를 사용하여 sprites를 추가하세요.
-ParticleContainer를 사용하기로 결정했다면 타협을 해야 합니다. ParticleContainer 내부의 sprites는 x, y, 너비, 높이, 척도, 피벗, 알파, 가시 등 몇 가지 기본 특성만 가지고 있으며, 이 정도밖에 되지 않습니다. 또한, 그 sprites가 가지고 있는 sprites는 그들만의 중첩된 children을 가질 수 없습니다. ParticleContainer는 또한 필터와 혼합 모드와 같은 Pixi의 고급 시각 효과를 사용할 수 없습니다. 각 ParticleContainer는 하나의 텍스쳐만 사용할 수 있습니다(따라서 다른 모양의 sprites를 원한다면 spritesheet를 사용해야 합니다). 하지만 당신이 얻는 엄청난 성능 향상을 위해, 그러한 타협은 대개 그만한 가치가 있습니다. 그리고 같은 프로젝트에서 Container와 ParticleContainers를 동시에 사용할 수 있어 최적화를 미세 조정할 수 있습니다.
-Particle Container내의 sprites는 왜 이렇게 빠를까요? 왜냐하면 sprites의 위치가 GPU에서 직접 계산되고 있기 때문입니다. 픽시 개발팀은 GPU에서 가능한 한 sprites 처리를 오프로드하는 작업을 하고 있기 때문에, 지금 사용하고 있는 픽시의 최신 버전은 제가 여기서 설명한 것보다 훨씬 기능이 풍부한 ParticleContainer를 가지고 있을 가능성이 높습니다. 자세한 내용은 현재 ParticleContainer 설명서를 참조하세요.
-ParticleContainer를 생성하는 경우, size, properties, batchSize 및 autoResize의 네 가지 선택적 인수를 제공할 수 있습니다.
+```
+
+그런 다음 일반 `Container`에서와 마찬가지로 `AddChild`를 사용하여 sprites를 추가하세요.
+
+`ParticleContainer`를 사용하기로 결정했다면 타협을 해야 합니다. `ParticleContainer` 내부의 sprites는 `x`, `y`, `width`, `height`, `scale`, `pivot`, `alpha`, `visible` 등 몇 가지 기본 특성만 가지고 있으며, 이 정도밖에 되지 않습니다. 또한, 그 sprites가 가지고 있는 sprites는 그들만의 중첩된 children을 가질 수 없습니다. `ParticleContainer`는 또한 필터와 혼합 모드와 같은 Pixi의 고급 시각 효과를 사용할 수 없습니다. 각 `ParticleContainer`는 하나의 텍스쳐만 사용할 수 있습니다(따라서 다른 모양의 sprites를 원한다면 spritesheet를 사용해야 합니다). 하지만 당신이 얻는 엄청난 성능 향상을 위해, 그러한 타협은 대개 그만한 가치가 있습니다. 그리고 같은 프로젝트에서 `Container`와 `ParticleContainers`를 동시에 사용할 수 있어 최적화를 미세 조정할 수 있습니다.
+
+`Particle Container`내의 sprites는 왜 이렇게 빠를까요? 왜냐하면 sprites의 위치가 GPU에서 직접 계산되고 있기 때문입니다. 픽시 개발팀은 GPU에서 가능한 한 sprites 처리를 오프로드하는 작업을 하고 있기 때문에, 지금 사용하고 있는 픽시의 최신 버전은 제가 여기서 설명한 것보다 훨씬 기능이 풍부한 `ParticleContainer`를 가지고 있을 가능성이 높습니다. 자세한 내용은 현재 ['ParticleContainer 설명서'](http://pixijs.download/release/docs/PIXI.particles.ParticleContainer.html)를 참조하세요.
+
+`ParticleContainer`를 생성하는 경우, `size`, `properties`, `batchSize` 및 `autoResize`의 네 가지 선택적 인수를 제공할 수 있습니다.
+
+```js
 let superFastSprites = new ParticleContainer(maxSize, properties, batchSize, autoResize);
-maxSize의 기본값은 1500입니다. 따라서 sprites를 더 포함해야 할 경우 더 높은 숫자로 설정하세요. 속성 인수는 scale, position, rotation, uvs 및 alphaAndTint 등 5개의 부울 값을 설정할 수 있는 객체입니다. position의 기본값은 참이지만 다른 것들은 모두 거짓으로 설정되어 있습니다. 즉, ParticleContainer에서 sprites의 rotation, scale, tint 또는 uvs를 변경하려면 다음과 같이 해당 속성을 true로 설정해야 합니다.
+```
+
+`maxSize`의 기본값은 1500입니다. 따라서 sprites를 더 포함해야 할 경우 더 높은 숫자로 설정하세요. `properties` 인수는 `scale`, `position`, `rotation`, `uvs` 및 `alphaAndTint` 등 5개의 부울 값을 설정할 수 있는 객체입니다. `position`의 기본값은 `true`이지만 다른 것들은 모두 `false`으로 설정되어 있습니다. 즉, `ParticleContainer`에서 sprites의 rotation, scale, tint 또는 uvs를 변경하려면 다음과 같이 해당 속성을 `true`로 설정해야 합니다:
+
+```js
 let superFastSprites = new ParticleContainer(
   size, 
   {
@@ -1693,13 +1941,26 @@ let superFastSprites = new ParticleContainer(
     uvs: true
   }
 );
-만약 당신이 이러한 속성을 사용하지 않아도 된다고 생각한다면, 그것들의 성능의 최댓값을 좀 더 짜 내기 위해 false로 설정해야 합니다.
-uvs의 속성은 무엇일까요? 텍스처가 움직이는 동안 텍스처를 변경하는 입자가 있는 경우에만 true로 설정하십시오. (모든 sprites의 텍스처도 같은 tileset에 있어야 합니다. 이 작업을 위한 tileset 이미지.) (참고 : UV mapping은 3D 표면에 매핑되는 텍스처 (이미지)의 x 및 y 좌표를 나타내는 3D 그래픽 디스플레이 용어입니다 .U는 x 축이고 V는 y 축입니다 .WebGL은 이미 3D 공간 위치 지정을위한 x, y 및 z이므로 2D 이미지 텍스처의 경우 x와 y를 나타내기 위해 U와 V를 선택했습니다.
-(저는 그 마지막 두 선택적 인자인 batchSize와 autoResize가 정확히 무엇인지 모르겠습니다. 그래서 누군가가 알고 있다면, 우리가 이슈에 알려주시기를 바랍니다!)
+```
+
+만약 당신이 이러한 속성을 사용하지 않아도 된다고 생각한다면, 그것들의 성능의 최댓값을 좀 더 짜 내기 위해 `false`로 설정해야 합니다.
+
+`uvs`의 속성은 무엇일까요? 텍스처가 움직이는 동안 텍스처를 변경하는 입자가 있는 경우에만 `true`로 설정하십시오. (모든 sprites의 텍스처도 같은 tileset에 있어야 합니다. 이 작업을 위한 tileset 이미지.) 
+
+(참고 : **UV mapping**은 3D 표면에 매핑되는 텍스처 (이미지)의 `x` 및 `y` 좌표를 나타내는 3D 그래픽 디스플레이 용어입니다 .`U`는 `x` 축이고 `V`는 `y` 축입니다 .WebGL은 이미 3D 공간 위치 지정을위한 `x`, `y` 및 `z`이므로 2D 이미지 텍스처의 경우 `x`와 `y`를 나타내기 위해 U와 V를 선택했습니다.
+
+(저는 그 마지막 두 선택적 인자인 `batchSize`와 `autoResize`가 정확히 무엇인지 모르겠습니다. 그래서 누군가가 알고 있다면, 우리가 이슈에 알려주시기를 바랍니다!)
+
+<a id='graphic'></a>
 Pixi의 그래픽 기초
-이미지 텍스처를 사용하는 것은 sprites를 만드는 가장 유용한 방법 중 하나이지만 Pixi는 자체 저수준 드로잉 도구도 가지고 있습니다. 그것들을 사용하여 직사각형, 도형, 선, 복잡한 다각형 및 텍스트를 만들 수 있습니다. 다행스럽게도 Canvas Drawing API와 거의 동일한 API를 사용하므로 이미 캔버스에 익숙하다면 배울 새로운 것은 없습니다. 그러나 큰 장점은 Canvas Drawing API와 달리 Pixi로 그리는 모양이 GPGL에서 WebGL에 의해 렌더링된다는 것입니다. Pixi는 당신이 그 미개발 된 성능 파워에 접근 할 수 있게 합니다. 기본적인 모양을 만드는 방법을 간단히 살펴 보겠습니다. 다음은 코드에서 앞으로 만들 모든 모양입니다.
+----------------
+
+이미지 텍스처를 사용하는 것은 sprites를 만드는 가장 유용한 방법 중 하나이지만 Pixi는 자체 저수준 드로잉 도구도 가지고 있습니다. 그것들을 사용하여 직사각형, 도형, 선, 복잡한 다각형 및 텍스트를 만들 수 있습니다. 다행스럽게도  [Canvas Drawing API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Drawing_graphics_with_canvas)와 거의 동일한 API를 사용하므로 이미 캔버스에 익숙하다면 배울 새로운 것은 없습니다. 그러나 큰 장점은 Canvas Drawing API와 달리 Pixi로 그리는 모양이 GPGL에서 WebGL에 의해 렌더링된다는 것입니다. Pixi는 당신이 그 미개발 된 성능 파워에 접근 할 수 있게 합니다. 기본적인 모양을 만드는 방법을 간단히 살펴 보겠습니다. 다음은 코드에서 앞으로 만들 모든 모양입니다.
+
+![Graphic primitives](/examples/images/screenshots/23.png)
  
 직사각형
+
 모든 모양은 먼저 Pixi의 Graphics 클래스 (PIXI.Graphics)의 처음 만든 새 인스턴스로 만듭니다.
 let rectangle = new Graphics();
 beginFill을 16 진수 색상 코드 값과 함께 사용하여 사각형의 채우기 색상을 설정합니다. 다음은 '밝은 파란색'으로 설정하는 방법입니다.
