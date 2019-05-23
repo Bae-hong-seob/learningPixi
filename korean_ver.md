@@ -28,22 +28,22 @@ Learning Pixi
            - (2). load 된 파일에 이름 지정
            - (3). load 진행과정 모니터링
            - (4). Pixi의 로더에 대한 추가 정보
-7. [속성의 위치 지정](#속성의위치지정)
-8. [크기와 규모](#크기와규모)
-9. [회전](#회전)
-10. [부가 이미지 모음으로부터 sprite 만들기](#)
-11. [텍스처 atlas 사용하기]()
-12. [텍스처 atlas 올리기]()
-13. [올려진 텍스처 atlas 로부터 sprites 만들기]()
-14. [sprites 움직이기](#)
-15. [속도의 속성 사용하기]()
-16. [게임 상태]()
-17. [키보드 움직임]()
-18. [Sprites 그룹화하기]()
+7. [속성의 위치 지정](#postioning)
+8. [크기와 규모](#size-n-scale)
+9. [회전](#rotation)
+10. [부가 이미지 모음으로부터 sprite 만들기](#tileset)
+11. [텍스처 atlas 사용하기](#texture-atlas)
+12. [텍스처 atlas 올리기](#loading-atlas)
+13. [올려진 텍스처 atlas 로부터 sprites 만들기](#creating-sprites-from-a-loaded-texture-atlas)
+14. [sprites 움직이기](#moving-sprites)
+15. [속도의 속성 사용하기](#velocity)
+16. [게임 상태](#game-states)
+17. [키보드 움직임](#keyboard)
+18. [Sprites 그룹화하기](#grouping)
 		
 		  i. 지역적 및 종합적 위치
           ii. ParticleContainer 를 사용하여 sprite 그룹화하기
-19. [Pixi의 그래픽 기초]()
+19. [Pixi의 그래픽 기초](#graphic)
 
            i. 직사각형
           ii. 원
@@ -51,29 +51,29 @@ Learning Pixi
          iv. 둥근 사각형
           v. 선
          vi. 다각형
-20. [텍스트 표시]()
-21. [충돌 감지]()
+20. [텍스트 표시](#text)
+21. [충돌 감지](#collision)
 
           i. hitTestRectangle 함수
-22. [사례 연구 : Treasure Hunter ]()
+22. [사례 연구 : Treasure Hunter ](#casestudy)
    
           i. setup 기능에서 게임 초기화
- 		  - (1). 게임 장면 만들기
- 		  - (2). 지하 감옥, 문, 탐험가 및 보물 만들기
- 		  - (3). 얼룩덜룩 한 괴물 만들기 
- 		  - (4). HP표시 바 만들기
- 		  - (5). 메시지 텍스트 만들기
+ 		  - (1). [게임 장면 만들기](#game-scene)
+ 		  - (2). [지하 감옥, 문, 탐험가 및 보물 만들기](#making-dungon)
+ 		  - (3). [얼룩덜룩 한 괴물 만들기](#making-blob) 
+ 		  - (4). [HP표시 바 만들기](#healthbar)
+ 		  - (5). [메시지 텍스트 만들기](#message)
  		  
          ii. 게임하기
 
         iii. 탐색기 이동
 
- 			  - (1). 움직임 포함
+ 			  - (1). [움직임 포함](#containing-movement)
         iv. 괴물 이동하기
          v. 충돌 확인
         vi. 출구 문에 도달하여 게임을 종료한다.
-23. [sprites에 대한 추가 정보]()
-24. [추가 정보]()
+23. [sprites에 대한 추가 정보](#sprite-properties)
+24. [추가 정보](#taking-it-further)</br>
 
          i. Hexi
         ii. BabylonJS
