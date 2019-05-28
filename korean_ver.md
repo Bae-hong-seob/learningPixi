@@ -1,11 +1,11 @@
-Learning Pixi
+Pixi 사용법
 ===========
 
 - [Pixi rendering engine]으로 게임과 대화형 미디어를 만드는 단계별 안내.(https://github.com/Bae-hong-seob/learningPixi/blob/develop/korean_ver.md).
 - **[Updated for Pixi v4.5.5]. 
 (https://github.com/pixijs/pixi.js/releases/tag/v4.5.5)**.
 - [Chinese version here: Pixi官方教程中文版.](https://github.com/Zainking/learningPixi).
-- [이 튜토리얼이 마음에 든다면, 80% 더 많은 내용을 담고 있는 이 책을 분명 좋아할 것이다.](http://www.springer.com/us/book/9781484210956).
+- [이 튜토리얼이 괜찮았다면, 더 많은 내용을 담고 있는 이 책을 추천합니다!] (http://www.springer.com/us/book/9781484210956)
 
 
 ### 목차
@@ -945,13 +945,13 @@ sprite가 64x64 픽셀이라고 가정하면 이제 sprite는 중심점을 중�
 부가 이미지 모음으로부터 sprite 만들기
 ----------------------------------------
 
-단일 이미지 파일에서 sprite를 만드는 방법을 알았습니다. 하지만 게임 디자이너는 일반적으로 **tilesets** (**spritesheets**라고도 함)를 사용하여 sprite를 만듭니다. Pixi는 이를 돕는 편리한 방법을 제공합니다. tileset은 하위 이미지가 포함된 단일 이미지 파일입니다. 하위 이미지는 게임에서 사용하려는 모든 그래픽을 나타냅니다. 다음은 게임 캐릭터와 게임 오브젝트를 하위 이미지로 포함하는 tilesets 이미지의 예입니다.
+단일 이미지 파일에서 sprite를 만드는 방법을 알았습니다. 하지만 게임 디자이너는 일반적으로 **tilesets** (**spritesheets**라고도 함)를 사용하여 sprite를 만듭니다. Pixi는 이를 돕는 편리한 방법을 제공합니다. tileset은 하위 이미지가 포함된 단일 이미지 파일입니다. 하위 이미지는 게임에서 사용하려는 모든 그래픽을 나타냅니다. 다음은 게임 캐릭터와 게임 를 하위 이미지로 포함하는 tilesets 이미지의 예입니다.
 
 ![An example tileset](/examples/images/screenshots/09.png)
  
-전체 tileset은 192 x 192 픽셀입니다. 각 이미지는 자체 32 x 32 픽셀 격자 셀에 있습니다. 타일셋에 모든 게임 그래픽을 저장하고 액세스하는 것은 그래픽 작업에 매우 효율적인 프로세서 및 메모리 효율적인 방법이며 Pixi는이를 위해 최적화되어 있습니다.
+전체 tileset은 192 x 192 픽셀입니다. 각 이미지는 자체 32 x 32 픽셀 격자 셀에 있습니다. 타일셋에 모든 게임 그래픽을 저장하고 액세스하는 것은 그래픽 작업에 매우 효율적인 프로세서와 메모리를 제공하며 Pixi는 이를 위해 최적화되어 있습니다.
 
-추출하려는 하위 이미지와 크기 및 위치가 동일한 직사각형 영역을 정의하여 타일 세트에서 하위 이미지를 캡처 할 수 있습니다. 다음은 tileset에서 추출한 로켓 하위 이미지의 예입니다.
+추출하려는 하위 이미지와 크기 및 위치가 동일한 직사각형 영역을 정의하여 tileset 에서 하위 이미지를 캡처 할 수 있습니다. 다음은 tileset에서 추출한 로켓 하위 이미지의 예입니다.
 
 ![Rocket extracted from tileset](/examples/images/screenshots/10.png)
  
@@ -965,7 +965,7 @@ loader
 
 ```
 
-그런 다음, 이미지가 로드되면 타일 세트의 직사각형 하위 섹션을 사용하여 sprite의 이미지를 만듭니다. 다음은 하위 이미지를 추출하고 로켓 sprite를 작성한 다음 캔버스에 위치를 표시하는 코드입니다.
+그런 다음, 이미지가 로드되면 tileset의 직사각형 하위 섹션을 사용하여 sprite의 이미지를 만듭니다. 다음은 하위 이미지를 추출하고 로켓 sprite를 작성한 다음 캔버스에 위치를 표시하는 코드입니다.
 
 ```js
 
@@ -998,15 +998,15 @@ function setup() {
 
 ```
 
-이건 어떻게 작동합니까?
-Pixi에는 사각형 모양을 정의하기 위한 범용 객체인 내장 `Rectangle` 객체 (`PIXI.Rectangle`)가 있습니다. 네 가지 주장이 필요합니다. 처음 두 인수는 사각형의 `x` 및 `y` 위치를 정의합니다. 마지막 두 가지는 `width`와 `height`를 정의합니다. 다음은 새로운 `Rectangle` 객체를 정의하는 형식입니다.
+이건 어떻게 작동할까요?
+Pixi에는 사각형 모양을 정의하기 위한 범용 객체인 내장 `Rectangle` 객체 (`PIXI.Rectangle`)가 있습니다. 네 가지 인수가 필요합니다. 처음 두 인수는 사각형의 `x` 및 `y` 위치를 정의합니다. 마지막 두 가지는 `width`와 `height`를 정의합니다. 다음은 새로운 `Rectangle` 객체를 정의하는 형식입니다.
 
 ```js
 
 let rectangle = new PIXI.Rectangle(x, y, width, height);
 
 ```
-사각형 객체는 *데이터 객체*일 뿐입니다. 어떻게 사용할지 결정하는 것은 당신에게 달려 있습니다. 이 예제에서는 우리가 추출하고자 하는 tileset상의 서브 이미지의 위치와 영역을 정의하기 위해이를 사용하고 있습니다. Pixi 텍스처에는 `frame`이라는 유용한 속성이 있으며 모든 `Rectangle` 객체에 설정할 수 있습니다. `frame`은 텍스처를 `rectangle`의 크기로 자릅니다. 다음은 `frame`을 사용하여 텍스처를 로켓의 크기와 위치로 자르는 방법입니다.
+사각형 객체는 *데이터 객체*일 뿐입니다. 어떻게 사용할지 결정하는 것은 당신에게 달려 있습니다. 이 예제에서는 우리가 추출하고자 하는 tileset상의 서브 이미지의 위치와 영역을 정의하기 위해 이를 사용하고 있습니다. Pixi 텍스처에는 `frame`이라는 유용한 속성이 있으며 모든 `Rectangle` 객체에 설정할 수 있습니다. `frame`은 텍스처를 `rectangle`의 크기에 맞추어 자릅니다. 다음은 `frame`을 사용하여 텍스처를 로켓의 크기와 위치에 맞춰 자르는 방법입니다.
 
 ```js
 
@@ -1015,7 +1015,7 @@ texture.frame = rectangle;
 
 ```
 
-그런 다음 자른 텍스처를 사용하여 sprites를 만들 수 있습니다.
+그런 다음 잘린 텍스처를 사용하여 sprites를 만들 수 있습니다.
 
 ```js
 
@@ -1025,31 +1025,31 @@ let rocket = new Sprite(texture);
 
 그리고 그것이 작동하는 방법입니다!
 
-tileset에서 sprite 텍스처를 만드는 것은 자주 이용하기 때문에, Pixi는 이를 수행하는데 도움이 되는 보다 편리한 방법을 제공합니다. 다음에 무엇이 있는지 알아보겠습니다.
+tileset에서 sprite 텍스처를 만드는 것은 매우 빈번한 작업이기 때문에, Pixi는 이를 수행하는데 도움이 되는 보다 편리한 방법을 제공합니다 - 이 방법에 무엇이 있는지 알아보겠습니다.
 
-<a id='texture-atlas'></a>
+<a id='textureatlas'></a>
 텍스터 atlas 사용하기
--------------------
-크고 복잡한 게임을 작업하는 경우 tileset에서 sprite를 빠르고 효율적으로 만들 수 있습니다. 이것은 **texture atlas**가 정말 유용하게 쓰이는 곳입니다. 텍스처 atlas는 일치하는 tileset의 PNG 이미지에서 하위 이미지의 위치와 크기가 포함된 JSON 데이터 파일입니다. 텍스처 atlas를 사용하는 경우 표시하려는 하위 이미지의 이름만 알면 됩니다. 임의의 순서로 tileset 이미지를 정렬할 수 있으며 JSON 파일은 크기와 위치를 추적합니다. 이는 tileset 이미지의 크기와 위치가 게임 프로그램에 하드 코딩 되지 않았기 때문에 매우 편리합니다. 이미지 추가, 크기 조정 또는 제거와 같이 tileset를 변경하면 JSON 파일을 다시 게시하기만 하면 게임에서 해당 데이터를 사용하여 올바른 이미지를 표시합니다. 게임 코드를 변경할 필요가 없습니다.
+---------------
 
-Pixi는 [Texture Packer](https://www.codeandweb.com/texturepacker)라는 유명한 소프트웨어 도구에서 출력하는 표준 JSON 텍스처 atlas 형식과 호환됩니다. Texture Packer의 "필수" 라이센스는 무료입니다. 텍스쳐 지도 제작에 사용하는 방법을 알아보고, 픽즐에 atlas를 로드하십시오. [Shoebox](http://renderhjs.net/shoebox/) 또는 [spritesheet.js](https://github.com/krzysztof-o/spritesheet.js/)와 같은 유사한 도구는 Pixi와 호환되는 표준 형식으로 PNG 및 JSON 파일을 출력합니다. (Texture Packer를 사용할 필요가 없습니다.)
+만약 여러분이 크고 복잡한 게임을 작업하는 경우, 당신은 tileset에서 sprite를 빠르고 효율적으로 만드는 방법을 원할 것 입니다. 여기선 **texture atlas**가 정말 유용하게 쓰입니다. 텍스처 atlas는 일치하는 tileset의 PNG 이미지에 하위 이미지의 위치와 크기가 포함된 JSON 데이터 파일입니다. 텍스처 atlas를 사용하는 경우 표시하려는 하위 이미지의 이름만 알면 됩니다. 임의의 순서로 tileset 이미지를 정렬할 수 있으며 JSON 파일은 크기와 위치를 추적합니다. 이는 tileset 이미지의 크기와 위치가 게임 프로그램에 hard-coding 되지 않았다는 것을 의미하기 때문에 매우 편리합니다. 이미지 추가, 크기 조정 또는 제거와 같이 tileset를 변경하고 JSON 파일을 다시 게시하기만 하면 게임에서 해당 데이터를 사용하여 올바른 이미지를 표시합니다. 게임 코드를 변경할 필요가 없습니다.
 
-먼저, 게임에서 사용할 개별 이미지 파일 모음부터 시작하십시오.
+Pixi는 Texture Packer라는 유명한 소프트웨어 도구에서 출력하는 표준 JSON 텍스처 atlas 형식과 호환됩니다. [Texture Packer](https://www.codeandweb.com/texturepacker)의 "Essential" 라이센스는 무료입니다. 텍스쳐 atlas 제작에 사용되는 방법을 알아보고, Pixi에 atlas를 로드하십시오. ([Shoebox](http://renderhjs.net/shoebox/) 또는 [spritesheet.js](https://github.com/krzysztof-o/spritesheet.js/)와 같은 유사한 도구는 Pixi와 호환되는 표준 형식으로 PNG 및 JSON 파일을 출력합니다. Texture Packer를 사용할 필요가 없습니다.)
+
+먼저, 게임에서 사용할 개별 이미지 파일의 모음으로 시작하십시오.
 
 ![Image files](/examples/images/screenshots/11.png)
 
-(이 섹션의 모든 이미지는 Lanea Zimmerman에 의해 작성되었습니다. [여기에서](http://opengameart.org/users/sharm) 그녀의 작품을 더 많이 찾을 수 있습니다. 감사합니다, Lanea!)
+(이 섹션의 모든 이미지는 Lanea Zimmerman에 의해 작성되었습니다. [여기](http://opengameart.org/users/sharm)에서 그녀의 작품을 더 많이 찾을 수 있습니다. 감사합니다, Lanea!)
 
 그런 다음 Texture Packer를 열고 프레임 워크 유형으로 **JSON Hash**를 선택하십시오. 이미지를 Texture Packer의 작업 공간으로 드래그 하십시오. (Texture Packer가 이미지가 있는 폴더를 가리킬수도 있습니다.) 이미지는 자동으로 단일 tileset 이미지에 정렬되고 원래 이미지 이름과 일치하는 이름을 지정합니다.
 
 ![Image files](/examples/images/screenshots/12.png)
- 
-(무료 버전의 Texture Packer를 사용하는 경우, **Algorithm**을 basix으로 설정하고 **Trim mode**를 none으로 설정하고 **Extrude**를 0으로 설정하고 **Size constraints**을 Any size로 설정한 다음 **PNG Opt Level**을 왼쪽에서 0까지 끝까지 슬라이드 합니다. 이것은 무료 버전의 Texture Packer가 경고 나 오류없이 파일을 생성할 수 있게 해주는 기본 설정입니다.)
 
-완료되면 **Publish** 버튼을 클릭하십시오. 파일 이름과 위치를 선택하고 게시된 파일을 저장하십시오. PNG 파일과 JSON 파일의 두 파일로 끝납니다. 이 예제에서 내 파일 이름은 `treasureHunter.json` 및 `treasureHunter.png`입니다. 좀 더 편하게 하려면, 두 파일을 모두 프로젝트의 `image` 폴더에 보관하십시오. (JSON 파일은 이미지 파일의 추가 메타 데이터로 생각할 수 있으므로 두 파일을 같은 폴더에 보관하는 것이 좋습니다.) JSON 파일은 tileset 각각의 하위 이미지의 이름, 크기 및 위치를 설명합니다. 여기 얼룩 괴물의 하위 이미지를 설명하는 발췌 부분이 있습니다.
+(무료 버전의 Texture Packer를 사용하는 경우, **Algorithm**을 `basix`으로 설정하고 **Trim mode**를 `None`으로 설정하고 **Extrude**를 `0`으로 설정하고 **Size constraints**을 `Any size`로 설정한 다음 **PNG Opt Level**을 왼쪽에서 `0`까지 끝까지 슬라이드 합니다. 이것은 무료 버전의 Texture Packer가 경고 혹은 오류없이 파일을 생성할 수 있게 해주는 기본 설정입니다.)
+
+완료되면 **Publish** 버튼을 클릭하십시오. 파일 이름과 위치를 선택하고 게시된 파일을 저장하십시오. PNG 파일과 JSON 파일의 두 파일로 끝납니다. 이 예제에서 내 파일 이름은 `treasureHunter.json` 및 `treasureHunter.png`입니다. 좀 더 편하게 하려면, 두 파일을 모두 프로젝트의 `image` 폴더에 보관하십시오. (JSON 파일은 이미지 파일의 추가적인 metadata로 생각할 수 있으므로 두 파일을 같은 폴더에 보관하는 것이 좋습니다.) JSON 파일은 tileset 각각의 하위 이미지의 이름, 크기 및 위치를 설명합니다. 여기 blob monster의 하위 이미지를 설명하는 발췌 부분이 있습니다.
 
 ```js
-
 "blob.png":
 {
 	"frame": {"x":55,"y":2,"w":32,"h":24},
@@ -1059,14 +1059,13 @@ Pixi는 [Texture Packer](https://www.codeandweb.com/texturepacker)라는 유명�
 	"sourceSize": {"w":32,"h":24},
 	"pivot": {"x":0.5,"y":0.5}
 },
-
 ```
 
-`treasureHunter.json` 파일에는 유사한 데이터가 있는 "dungeon.png", "door.png", "exit.png" 및 "explorer.png" 속성도 포함되어 있습니다. 이러한 각 하위 이미지를 **frames**라고 합니다. 이 데이터를 가지고 있으면 tilset 각 하위 이미지의 크기와 위치를 알 필요가 없기 때문에 매우 유용합니다. 알아야 할 것은 sprite의 **frame id**뿐입니다. Frame id는 "blob.png"또는 "explorer.png"와 같은 원본 이미지 파일의 이름일 뿐입니다.
+`treasureHunter.json` 파일에는 각각 유사한 데이터를 가진 "dungeon.png", "door.png", "exit.png" 및 "explorer.png" 속성도 포함되어 있습니다. 이러한 각 하위 이미지를 **frames**라고 합니다. 이 데이터를 가지고 있으면 tilset에 있는 각 하위 이미지의 크기와 위치를 알 필요가 없기 때문에 매우 유용합니다. 알아야 할 것은 sprite의 **frame id** 뿐입니다. Frame id는 "blob.png"또는 "explorer.png"와 같은 원본 이미지 파일의 이름일 뿐입니다.
 
-텍스쳐 atlas를 사용하는 많은 장점 중 하나는 각 이미지 주위에 2 픽셀의 padding을 쉽게 추가 할 수 있다는 것입니다(Texturn Packer는 기본적으로 이 작업을 수행합니다.). 이것은 **texture bleed**의 가능성을 방지하기 위해 중요합니다. Texture bleed는 tileset의 인접한 이미지의 가장자리가 sprite옆에 나타날 때 발생하는 효과입니다. 이것은 컴퓨터의 GPU (Graphics Processing Unit)가 분수 픽셀 값을 반올림하는 방법을 결정하는 방식 때문에 발생합니다. 그것들을 반올림 해야할까요? 이것은 각 GPU마다 다를 것입니다. tilseset의 이미지 주위에 1 또는 2 픽셀의 간격을 두면 모든 이미지가 일관되게 표시됩니다.
+텍스쳐 atlas를 사용하는 많은 장점 중 하나는 각 이미지 주위에 2 픽셀의 padding을 쉽게 추가 할 수 있다는 것입니다(Texturn Packer는 기본적으로 이 작업을 수행합니다.). 이것은 texture bleed의 가능성을 방지하기 위해 중요합니다. **Texture bleed**는 tileset의 인접한 이미지의 가장자리가 sprite옆에 나타날 때 발생하는 효과입니다. 이것은 컴퓨터의 GPU (Graphics Processing Unit)가 분수 픽셀 값을 반올림하는 방법을 결정하는 방식 때문에 발생합니다. 그것들을 반올림 해야할까요? 이것은 각 GPU 마다 다를 것입니다. tileset의 이미지 주위에 1 또는 2 픽셀의 간격을 두면 모든 이미지가 일관되게 표시됩니다.
 
-(참고 : 그래픽 주위에 두 개의 픽셀 padding이 있고 Pixi가 표시하는 방식으로 이상한 "한 픽셀 씩" 결함이 계속 표시되는 경우, 텍스처의 눈금 모드 알고리즘을 변경해보십시오. 방법은 다음과 같습니다 : `texture.baseTexture. scaleMode = PIXI.SCALE_MODES.NEAREST;` 이러한 결함은 GPU 부동 소수점 올림 오류로 인해 때때로 발생할 수 있습니다.)
+(참고 : 그래픽 주위에 두 개의 픽셀 padding이 있고 Pixi가 표시하는 방식으로 이상한 "off by one pixel" 결함이 계속 표시되는 경우, 텍스처의 scale mode 알고리즘을 변경해보십시오. 방법은 다음과 같습니다 : `texture.baseTexture. scaleMode = PIXI.SCALE_MODES.NEAREST;` 이러한 결함은 GPU 부동 소수점 올림 오류로 인해 때때로 발생할 수 있습니다.)
 
 이제 텍스처 atlas를 만드는 방법을 알았으므로, 게임 코드에 텍스처를 로드하는 방법을 알아보겠습니다.
 
@@ -1110,7 +1109,7 @@ let id = PIXI.loader.resources["images/treasureHunter.json"].textures;
 let sprite = new Sprite(id["frameId.png"]);
 ```
 
-훨씬 낫다!
+훨씬 !
 
 `dungeon`, `explorer` 및 `treasure` sprites를 만들고 표시하기 위해 setup 기능에서 이 세 가지 다른 sprites 생성 기술을 사용하는 방법은 다음과 같습니다.
 ```js
@@ -1168,7 +1167,7 @@ explorer.y = app.stage.height / 2 - explorer.height / 2;
 
 ![All the texture atlas sprites](/examples/images/screenshots/14.png)
  
-이 모든 것을 수행하는 전체 코드가 있습니다. HTML 코드가 포함되어 있으므로 모든 것을 적절한 상황에서 볼 수 있습니다. (이 작업 코드는 이 저장소의 `examples/ spriteFromTextureAtlas.html` 파일에서 찾을 수 있습니다.) `blob` sprites가 생성되어 루프의 스테이지에 추가되고 임의의 위치가 지정됩니다.
+이 모든 것을 수행하는 전체 코드가 있습니다. 저는 또한 모든 코드를 적절한 맥락에서 볼 수 있도록 HTML 코드를 포함시켰습니다. (이 작업 코드는 이 저장소의 `examples/ spriteFromTextureAtlas.html` 파일에서 찾을 수 있습니다.) `blob` sprites가 생성되어 루프로 스테이지에 추가되고 임의의 위치가 지정된다는 점에 유의하세요.
 ```js
 <!doctype html>
 <meta charset="utf-8">
@@ -1290,7 +1289,7 @@ let x = spacing * i + xOffset;
 blob.x = x;
 ```
 
-`spacing` 값은 48이고 `xOffset` 값은 150입니다. 첫 번째 `blob`의 `x` 위치는 150입니다. 이 값은 stage의 왼쪽에서 150 픽셀만큼 오프셋됩니다. 각 후속 `blob`은 루프의 이전 반복에서 생성 된 `blob`보다 48 픽셀 큰 `x` 값을 가집니다. 이것은 지하 감옥 바닥을 따라 왼쪽에서 오른쪽으로 똑같이 간격을 둔 blob 몬스터 라인을 만듭니다.
+`spacing` 값은 48이고 `xOffset` 값은 150입니다. 첫 번째 `blob`의 `x` 위치는 150입니다. 이 값은 stage의 왼쪽에서 150 픽셀만큼 간격을 띄워줍니다. 각 후속 `blob`은 루프의 이전의 반복에서 생성 된 `blob`보다 48 픽셀 큰 `x` 값을 가집니다. 이것은 지하 감옥 바닥을 따라 왼쪽에서 오른쪽으로 똑같이 간격을 둔 blob 몬스터 라인을 만듭니다.
 
 각 `blob`에는 임의의 `y` 위치가 주어집니다. 이 작업을 수행하는 코드는 다음과 같습니다:
 
@@ -1299,7 +1298,7 @@ let y = randomInt(0, stage.height - blob.height);
 blob.y = y;
 ```
 
-`blob`의 `y` 위치에는 0과 512 사이의 임의의 난수를 할당 할 수 있습니다.이 난수는 `stage.height`의 값입니다. 이 함수는 `randomInt`라는 사용자 정의 함수를 사용하여 작동합니다. `randomInt`는 임의의 두 숫자 사이의 범위에 있는 임의의 숫자를 반환합니다.
+`blob`의 `y` 위치에는 0과 512 사이의 임의의 난수를 할당 할 수 있습니다. 이 난수는 `stage.height`의 값입니다. 이 함수는 `randomInt`라는 사용자 정의 함수를 사용하여 작동합니다. `randomInt`는 임의의 두 숫자 사이의 범위에 있는 임의의 숫자를 반환합니다.
 
 ```js
 randomInt(lowestNumber, highestNumber)
@@ -1319,13 +1318,13 @@ function randomInt(min, max) {
 }
 ```
 
-`randomInt`는 게임을 만들기 위한 뒷 주머니에 보관할 수 있는 아주 작은 기능입니다. 항상 사용합니다.
+`randomInt`는 게임을 만들기 위한 뒷 주머니에 보관할 수 있는 아주 작은 기능입니다. 저는 이것을 항상 사용합니다.
 
 <a id='moving-sprites'>
 sprites 움직이기
 ---------------
 
-이제 sprites를 표시하는 방법을 알았지만 sprites를 어떻게 움직이게 할까요? 간단합니다 : Pixi 's `ticker`를 사용하여 루핑 기능 만들기. **game loop**라고 합니다. 게임 루프 안에 넣은 코드는 초당 60 회 업데이트됩니다. 다음은 'cat' sprites가 프레임 당 1 픽셀의 비율로 오른쪽으로 이동하도록 작성하는 코드입니다.
+이제 sprites를 표시하는 방법을 알았지만 sprites를 어떻게 움직이게 할까요? 간단합니다 : Pixi 's `ticker`를 사용하여 looping 기능 만들기. 이것은 **game loop**라고 합니다. 게임 루프 안에 넣은 코드는 초당 60 회 업데이트됩니다. 다음은 'cat' sprites가 프레임 당 1 픽셀의 비율로 오른쪽으로 이동하도록 작성하는 코드입니다.
 
 ```js
 function setup() {
@@ -1352,17 +1351,17 @@ function gameLoop(delta){
 cat.x += 1;
 ```
 
-Pixi의 `ticker`에 추가하는 기능은 초당 60 회 호출됩니다. 함수에 `delta` 인수가 있음을 알 수 있습니다 - 그게 뭘까요?
+Pixi의 `ticker`에 추가하는 함수는 초당 60 회 호출됩니다. 함수에 `delta` 인수가 있음을 알 수 있습니다 - 그게 뭘까요?
 
-`delta` 값은 프레임 간의 부분 지연의 양을 나타냅니다. 고양이의 애니메이션을 프레임 속도와 독립적으로 만들기 위해 고양이의 위치에 선택적으로 추가 할 수 있습니다. 방법은 다음과 같습니다 :
+`delta` 값은 프레임 간에 부분적으로 지연되는 양을 나타냅니다. 고양이의 애니메이션을 프레임 속도와 독립적으로 만들기 위해 고양이의 위치에 선택적으로 추가 할 수 있습니다. 방법은 다음과 같습니다 :
 
 ```js
 cat.x += 1 + delta;
 ```
 
-이 `delta` 값을 추가할지 여부는 주로 미학적인 선택입니다. 그리고 효과는 애니메이션이 초당 60 프레임의 일관된 디스플레이 속도 (예 : 느린 장치에서 실행되는 경우)에서 계속 고생하려고 애쓰는 경우에만 눈에 띄게 됩니다. 이 튜토리얼의 나머지 예제는 이 `delta` 값을 사용하지 않지만 원하는 경우 자유롭게 사용할 수 있습니다.
+이 `delta` 값을 추가할지 여부는 주로 미학적인 선택입니다. 그리고 이 효과는 애니메이션이 초당 60 프레임의 일관된 디스플레이 속도 (예 : 느린 장치에서 실행되는 경우)를 따라잡으려고 고군분투 하고 있을 경우에만 눈에 띄게 됩니다. 이 튜토리얼의 나머지 예제는 이 `delta` 값을 사용하지 않지만 원하는 경우 자유롭게 사용할 수 있습니다.
 
-Pixi의 티커를 사용하여 게임 루프를 만들 필요가 없습니다. 원하는 경우 `requestAnimationFrame`을 다음과 같이 사용하십시오 :
+Pixi의 ticker를 사용하여 게임 루프를 만들 필요가 없습니다. 원하는 경우 `requestAnimationFrame`을 다음과 같이 사용하십시오 :
 
 ```js
 function gameLoop() {
@@ -1438,7 +1437,7 @@ function gameLoop(delta){
 
 (`cat` 변수는 `setup` 및 `gameLoop` 함수 외부에서 정의 되어야만 양쪽 모두에서 액세스 할 수 있습니다.)
 
-sprites의 크기, 회전 또는 크기를 애니메이트 할 수 있습니다. sprites를 미리 애니메이션 화하는 방법에 대한 더 많은 예제가 있습니다.
+sprites의 크기, 회전 또는 크기를 애니메이션화 할 수 있습니다. 무엇이든간에 sprites를 미리 애니메이션화 하는 방법에 대한 더 많은 예제를 찾아 볼 수 있습니다.
 
 <a id='velocity'></a>
 속도의 속성 사용하기
@@ -1455,7 +1454,7 @@ cat.vy = 0;
 
 `vx`와 `vy`를 0으로 설정하면 sprites가 움직이지 않는다는 의미입니다.
 
-그런 다음 게임 루프에서 `vx`와 `vy`를 sprites가 이동할 속도로 업데이트하십시오. 그런 다음 해당 값을 sprites의 `x` 및 `y` 속성에 할당합니다. 다음은 이 기술을 사용하여 각 프레임마다 한 픽셀 씩 고양이 sprites를 아래쪽에서 오른쪽으로 움직이는 방법입니다:
+그런 다음 게임 루프에서 `vx`와 `vy`를 sprites가 이동할 속도로 업데이트하십시오. 그런 다음 해당 값을 sprites의 `x` 및 `y` 속성에 할당합니다. 다음은 이 기술을 사용하여 각 프레임마다 한 픽셀 씩 고양이 sprites를 오른쪽 아래로 움직이는 방법입니다:
 
 ```js
 function setup() {
@@ -1488,7 +1487,7 @@ function gameLoop(delta){
 
 ![Moving sprites](/examples/images/screenshots/16.png)
 
-고양이가 다른 방향으로 움직이게 하려면 어떨까요? 고양이를 왼쪽으로 이동하려면 `vx` 값을 `-1`로 지정하십시오. 그것을 위로 움직이려면 고양이에게 `-1`의 값을 부여하십시오. 고양이가 더 빠르게 움직이게 하려면 `3`, `5`, `-2` 또는 `-4`와 같이 더 큰 `vx` 및 `vy` 값을 지정하십시오.
+고양이를 다른 방향으로 움직이게 하려면 어떨까요? 고양이를 왼쪽으로 이동하려면 `vx` 값을 `-1`로 지정하십시오. 그것을 위로 움직이려면 고양이에게 `-1`의 값을 부여하십시오. 고양이가 더 빠르게 움직이게 하려면 `3`, `5`, `-2` 또는 `-4`와 같이 더 큰 `vx` 및 `vy` 값을 지정하십시오.
 
 `vx` 및 `vy` 속도 속성을 사용하여 sprites의 속도를 모듈화하는 방법을 통해 게임의 키보드 및 마우스 포인터 제어 시스템을 비롯하여 물리를 보다 쉽게 구현할 수 있습니다.
 
@@ -1496,7 +1495,7 @@ function gameLoop(delta){
 게임 상태
 --------
 
-스타일의 문제로서 코드를 모듈화하는 데 도움이 되도록 다음과 같이 게임 루프를 구조화하는 것이 좋습니다 :
+스타일에 따라, 그리고 당신의 코드를 모듈화하는 데 도움이 되도록 다음과 같이 게임 루프를 구조화하는 것이 좋습니다 :
 
 ```js
 //Set the game state
@@ -1519,7 +1518,7 @@ function play(delta) {
 }
 ```
 
-`gameLoop`이 `state`라는 함수를 초당 60 회 호출하고 있음을 알 수 있습니다. `state`함수란 무엇입니까? `play`에 배정되었습니다. 즉, `play`함수의 모든 코드도 초당 60 회 실행됩니다.
+`gameLoop`이 `state`라는 함수를 초당 60 회 호출하고 있음을 알 수 있습니다. `state`함수란 무엇입니까? 이것은 `play`에 배치 되어있습니다. 즉, `play`함수의 모든 코드도 초당 60 회 실행됩니다.
 
 다음은 이전 예제의 코드를 이 새 모델에 다시 적용하는 방법입니다 :
 
@@ -1557,13 +1556,13 @@ function play(delta) {
 }
 ```
 
-그래, 저도 알아요, 이것은 약간 [head-swirler](http://www.amazon.com/Electric-Psychedelic-Sitar-Headswirlers-1-5/dp/B004HZ14VS)이다! 그러나 두려워하지 말고 그 기능들이 어떻게 연결되어 있는지 1, 2 분간 마음 속으로 보냅니다. 앞서 살펴 보았듯이 게임 루프를 이렇게 구성하면 게임 장면과 레벨을 전환하는 것과 같은 일을 훨씬 더 쉽게 수행 할 수 있습니다.
+그래, 저도 알아요, 이것은 약간 [head-swirler](http://www.amazon.com/Electric-Psychedelic-Sitar-Headswirlers-1-5/dp/B004HZ14VS)이다! 그러나 두려워하지 말고 그 기능들이 어떻게 연결되어 있는지 1, 2 분간 마음 속으로 생각해보세요. 앞서 살펴 보았듯이 게임 루프를 이렇게 구성하면 게임 장면과 레벨을 전환하는 것과 같은 일을 훨씬 더 쉽게 수행 할 수 있습니다.
 
 <a id='keyboard'></a>
 키보드 움직임
 -----------
 
-조금 더 작업을 하면 키보드를 사용하여 sprite를 제어하는 간단한 시스템을 구축할 수 있습니다. 코드를 단순화하기 위해 키보드 이벤트를 청취하고 캡처하는 `keyboard`라는 사용자 지정 함수를 사용하는 것이 좋습니다.
+조금 더 작업을 하면 키보드를 사용하여 sprite를 제어하는 간단한 시스템을 구축할 수 있습니다. 코드를 단순화하기 위해 키보드 타이핑을 청취하고 캡처하는 `keyboard`라는 사용자 지정 함수를 사용하는 것이 좋습니다.
 
 ```js
 function keyboard(value) {
@@ -1620,9 +1619,9 @@ keyboard 기능은 사용하기 쉽습니다. 다음과 같이 새 키보드 객
 let keyObject = keyboard(keyValue);
 ```
 
-하나의 인수는 당신이 듣고 싶어하는 핵심적인 가치입니다. 다음은 [key 목록입니다.](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values).
+하나의 인수는 당신이 필요해 하는 핵심적인 가치입니다. 다음은 [key 목록입니다.](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values).
 
-그런 다음 키보드 개체에 다음과 같이 `press` 및 `release` 메서드를 할당합니다.
+그런 다음 키보드 객체에 다음과 같이 `press` 및 `release` 메서드를 할당합니다.
 
 ```js
 keyObject.press = () => {
@@ -1635,7 +1634,7 @@ keyObject.release = () => {
 
 키보드 객체에는 각 키의 상태를 확인하는 데 사용할 수 있는 `isDown` 및 `isUp` Boolean 속성도 있습니다.
 
-`unsubscribe` 메서드를 사용하여 이벤트 리스너를 제거하는 것을 잊지 마세요.
+`unsubscribe` 메서드를 사용하여 event listener를 제거하는 것을 잊지 마세요.
 
 ```js
 keyObject.unsubscribe();
@@ -1743,7 +1742,7 @@ function play(delta) {
 Sprites 그룹화하기
 -----------------
 
-그룹화를 하면 게임 장면을 생성하고 유사한 Sprites를 단일 단위로 관리할 수 있습니다. 픽시는 이것을 할 수 있게 해주는 `Container` 라는 객체를 가지고 있습니다. 어떻게 작동하는지 알아봅시다.
+그룹화를 하면 게임 장면을 생성하고 유사한 Sprites를 단일 단위로 관리할 수 있습니다. Pixi는 이것을 할 수 있게 해주는 `Container` 라는 객체를 가지고 있습니다. 이것이 어떻게 작동하는지 알아봅시다.
 
 고양이, 고슴도치, 호랑이의 세 가지 Sprites를 보여주고 싶다고 상상해 보세요. 그것들을 만들고, 그들의 위치를 정하세요 - *그러나 그것들을 Stage에 추가하지 마세요*.
 
@@ -1959,20 +1958,42 @@ Pixi의 그래픽 기초
 
 ![Graphic primitives](/examples/images/screenshots/23.png)
  
-직사각형
+<a id='rectangles'></a>
+### 직사각형
 
-모든 모양은 먼저 Pixi의 Graphics 클래스 (PIXI.Graphics)의 처음 만든 새 인스턴스로 만듭니다.
+모든 모양은 먼저 Pixi의 `Graphics` 클래스(`PIXI.Graphics`)의 처음 만든 새 인스턴스로 만듭니다.
+
+```js
 let rectangle = new Graphics();
-beginFill을 16 진수 색상 코드 값과 함께 사용하여 사각형의 채우기 색상을 설정합니다. 다음은 '밝은 파란색'으로 설정하는 방법입니다.
+```
+
+`beginFill`을 16 진수 색상 코드 값과 함께 사용하여 사각형의 채우기 색상을 설정합니다. 다음은 '밝은 파란색'으로 설정하는 방법입니다.
+
+```js
 rectangle.beginFill(0x66CCFF);
-도형에 윤곽선을 지정하려면 lineStyle 메서드를 사용합니다. 사각형에 4 픽셀 너비의 빨간색 윤곽선을 지정하고 알파 값을 1로 지정하는 방법은 다음과 같습니다.
+```
+
+도형에 윤곽선을 지정하려면 `lineStyle` 메서드를 사용합니다. 사각형에 4 픽셀 너비의 빨간색 윤곽선을 지정하고 `alpha` 값을 1로 지정하는 방법은 다음과 같습니다.
+
+```js
 rectangle.lineStyle(4, 0xFF3300, 1);
-drawRect 메서드를 사용하여 사각형을 그립니다. 네 가지 인수는 x, y, 너비 및 높이입니다.
+```
+
+`drawRect` 메서드를 사용하여 사각형을 그립니다. 네 가지 인수는 `x`, `y`, `width` 및 `height` 입니다.
+
+```js
 rectangle.drawRect(x, y, width, height);
-완료되면 endFill을 사용하십시오.
+```
+
+완료되면 `endFill` 을 사용하십시오.
+
+```js
 rectangle.endFill();
+```
+
 그것은 Canvas Drawing API와 같습니다! 사각형을 그리고 위치를 변경하고 stage에 추가하는 데 필요한 모든 코드가 있습니다.
 
+```js
 let rectangle = new Graphics();
 rectangle.lineStyle(4, 0xFF3300, 1);
 rectangle.beginFill(0x66CCFF);
@@ -1981,12 +2002,22 @@ rectangle.endFill();
 rectangle.x = 170;
 rectangle.y = 170;
 app.stage.addChild(rectangle);
+```
 
 이 코드는 x와 y 위치가 170 인 빨간색 테두리가 있는 64 x 64 파란색 직사각형을 만듭니다.
-원
-drawCircle 메서드로 원을 만듭니다. 세 가지 인수는 x, y 및 반지름입니다.
+
+<a id='circles'></a>
+### 원
+
+drawCircle 메서드로 원을 만듭니다. 세 가지 인수는 `x`, `y` 및 `radius` 입니다.
+
+```js
 drawCircle(x, y, radius)
+```
+
 직사각형 및 sprites와 달리 원의 x 및 y 위치는 중심점입니다. 반경이 32 픽셀 인 보라색 원을 만드는 방법은 다음과 같습니다.
+
+```js
 let circle = new Graphics();
 circle.beginFill(0x9966FF);
 circle.drawCircle(0, 0, 32);
@@ -1994,10 +2025,20 @@ circle.endFill();
 circle.x = 64;
 circle.y = 130;
 app.stage.addChild(circle);
-타원
-캔버스 위의 그리기 API 인 Pixi를 사용하면 DrawEllipse 메서드로 타원을 그릴 수 있습니다.
+```
+
+<a id='ellipses'></a>
+### 타원
+
+캔버스 위의 그리기 API 인 Pixi를 사용하면 `DrawEllipse` 메서드로 타원을 그릴 수 있습니다.
+
+```js
 drawEllipse(x, y, width, height);
+```
+
 x / y 위치는 타원의 왼쪽 위 모서리를 정의합니다 (타원은 보이지 않는 사각형 경계 상자로 둘러싸여 있습니다. 상자의 왼쪽 위 모서리는 타원의 x / y 앵커 위치를 나타냅니다). 다음은 폭이 50 픽셀이고 높이가 20 픽셀 인 노란색 타원입니다.
+
+```js
 let ellipse = new Graphics();
 ellipse.beginFill(0xFFFF00);
 ellipse.drawEllipse(0, 0, 50, 20);
@@ -2005,10 +2046,19 @@ ellipse.endFill();
 ellipse.x = 180;
 ellipse.y = 130;
 app.stage.addChild(ellipse);
-둥근 사각형
-Pixi를 사용하면 drawRoundedRect 메서드로 둥근 사각형을 만들 수 있습니다. 마지막 인수 인 cornerRadius는 결정하는 픽셀 단위의 숫자입니다.
+```
+
+<a id='roundedrect'></a>
+### 둥근 사각형
+Pixi를 사용하면 `drawRoundedRect` 메서드로 둥근 사각형을 만들 수 있습니다. 마지막 인수 인 `cornerRadius`는 결정하는 픽셀 단위의 숫자입니다.
+
+```js
 drawRoundedRect(x, y, width, height, cornerRadius)
+```
+
 다음은 코너 반경이 10 픽셀 인 둥근 직사각형을 만드는 방법입니다.
+
+```js
 let roundBox = new Graphics();
 roundBox.lineStyle(4, 0x99CCFF, 1);
 roundBox.beginFill(0xFF9933);
@@ -2017,8 +2067,14 @@ roundBox.endFill();
 roundBox.x = 48;
 roundBox.y = 190;
 app.stage.addChild(roundBox);
-선
-위의 예에서 보았습니다. 캔버스 드로잉 API를 사용하는 것과 같은 방법으로 moveTo 및 lineTo 메서드를 사용하여 선의 시작점과 끝점을 그릴 수 있습니다. 다음은 4 픽셀 너비의 흰색 대각선을 그리는 방법입니다.
+```
+
+<a id='lines'></a>
+###선
+
+위에서 `lineStyle` 메소드를 사용한 예제를 보았으니 선을 정의하십시오 캔버스 드로잉 API를 사용하는 것과 같은 방법으로 `moveTo` 및 `lineTo` 메서드를 사용하여 선의 시작점과 끝점을 그릴 수 있습니다. 다음은 4 픽셀 너비의 흰색 대각선을 그리는 방법입니다.
+
+```js
 let line = new Graphics();
 line.lineStyle(4, 0xFFFFFF, 1);
 line.moveTo(0, 0);
@@ -2026,9 +2082,16 @@ line.lineTo(80, 50);
 line.x = 32;
 line.y = 32;
 app.stage.addChild(line);
-선과 같은 PIXI.Graphics 객체는 sprites와 마찬가지로 x 및 y 값을 가지므로 stage를 그리면 stage의 아무 곳에나 배치 할 수 있습니다.
-다각형
-다각형 메서드를 사용하여 선을 결합하고 색상으로 채워 복잡한 모양을 만들 수 있습니다. drawPolygon의 인수는 도형의 각 점의 위치를 정의하는 x / y 점의 경로 배열입니다.
+```
+
+선과 같은 `PIXI.Graphics` 객체는 sprites와 마찬가지로 `x` 및 `y` 값을 가지므로 stage를 그리면 stage의 아무 곳에나 배치 할 수 있습니다.
+
+<a id='polygons'></a>
+### 다각형
+
+다각형 메서드를 사용하여 선을 결합하고 색상으로 채워 복잡한 모양을 만들 수 있습니다. `drawPolygon`의 인수는 도형의 각 점의 위치를 정의하는 x / y 점의 경로 배열입니다.
+
+```js
 let path = [
   point1X, point1Y,
   point2X, point2Y,
@@ -2036,7 +2099,11 @@ let path = [
 ];
 
 graphicsObject.drawPolygon(path);
-drawPolygon은이 세 점을 결합하여 도형을 만듭니다. 다각형을 사용하여 선을 파란색 테두리로 연결하는 방법은 다음과 같습니다. 삼각형은 위치 0.0에서 그려지고 x 및 y 속성을 사용하여 스테이지에서 해당 위치로 이동합니다.
+```
+
+`drawPolygon`은이 세 점을 결합하여 도형을 만듭니다. `drawPolygon'을 사용하여 선을 파란색 테두리로 연결하는 방법은 다음과 같습니다. 삼각형은 위치 0.0에서 그려지고 `x` 및 `y` 속성을 사용하여 stage에서 해당 위치로 이동합니다.
+
+```js
 let triangle = new Graphics();
 triangle.beginFill(0x66FF33);
 
@@ -2058,16 +2125,30 @@ triangle.x = 180;
 triangle.y = 22;
 
 app.stage.addChild(triangle);
+```
 
+<a id='text'></a>
 텍스트 표시
-텍스트 개체 (PIXI.Text)를 사용하여 스테이지에 텍스트를 표시합니다. 가장 간단한 형태로 다음과 같이 할 수 있습니다.
+-------------
+
+`Text` 개체 (PIXI.Text)를 사용하여 스테이지에 텍스트를 표시합니다. 가장 간단한 형태로 다음과 같이 할 수 있습니다.
+
+```js
 let message = new Text("Hello Pixi!");
 app.stage.addChild(message);
+```
 
-그러면 캔버스에 "Hello, Pixi"라는 단어가 표시됩니다. Pixi의 Text 객체는 Sprite 클래스에서 상속되므로 x, y, width, height, alpha 및 rotation과 같은 모든 속성을 포함합니다. 다른 Sprite처럼 스테이지의 텍스트를 배치하고 크기를 조정하십시오. 예를 들어 position.set을 사용하여 다음과 같이 메시지의 x 및 y 위치를 설정할 수 있습니다.
+그러면 캔버스에 "Hello, Pixi"라는 단어가 표시됩니다. Pixi의 Text 객체는 `Sprite` 클래스에서 상속되므로 `x`, `y`, `width`, `height`, `alpha` 및 `rotation` 과 같은 모든 속성을 포함합니다. 다른 Sprite처럼 스테이지의 텍스트를 배치하고 크기를 조정하십시오. 예를 들어 `position.set`을 사용하여 다음과 같이 메시지의 `x` 및 `y` 위치를 설정할 수 있습니다.
+
+```js
 message.position.set(54, 96);
- 
-이건 당신에게 기본적이고, 방식이 따로 없는 텍스트 줄 것입니다. 그러나 더 좋아지기를 원하면 Pixi의 TextStyle 함수를 사용하여 사용자 정의 텍스트 스타일을 정의하십시오. 방법은 다음과 같습니다.
+```
+
+![Displaying text](/examples/images/screenshots/24.png)
+
+이건 당신에게 기본적이고, 방식이 따로 없는 텍스트 줄 것입니다. 그러나 더 좋아지기를 원하면 Pixi의 `TextStyle` 함수를 사용하여 사용자 정의 텍스트 스타일을 정의하십시오. 방법은 다음과 같습니다.
+
+```js
 let style = new TextStyle({
   fontFamily: "Arial",
   fontSize: 36,
@@ -2080,50 +2161,81 @@ let style = new TextStyle({
   dropShadowAngle: Math.PI / 6,
   dropShadowDistance: 6,
 });
-이렇게 하면 사용하려는 모든 텍스트 스타일을 포함하는 새 style 객체가 만들어집니다. 사용할 수 있는 모든 스타일 속성의 전체 목록은 여기를 참조하십시오.
-텍스트에 스타일을 적용하려면 다음과 같이 style 객체를 Text 함수의 두 번째 인자로 추가하십시오.
-let message = new Text("Hello Pixi!", style);
- 
-텍스트 객체를 만든 후에 내용을 변경하려면 text 속성을 사용합니다.
-message.text = "Text changed!";
+```
 
-스타일 속성을 다시 정의하려면 style 속성을 사용하십시오.
+이렇게 하면 사용하려는 모든 텍스트 스타일을 포함하는 새로운 `style` 객체가 생성됩니다. 사용할 수 있는 모든 스타일 속성의 전체 목록은 [여기](http://pixijs.download/release/docs/PIXI.TextStyle.html)를 참조하십시오.
+
+텍스트에 스타일을 적용하려면 다음과 같이 `style` 객체를 `Text` 함수의 두 번째 인자로 추가하십시오.
+
+```js
+let message = new Text("Hello Pixi!", style);
+```
+
+![Displaying text](/examples/images/screenshots/24.5.png)
+
+텍스트 객체를 만든 후에 내용을 변경하려면 `text` 속성을 사용합니다.
+
+```js
+message.text = "Text changed!";
+```
+
+스타일 속성을 다시 정의하려면 `style` 속성을 사용하십시오.
+
+```js
 message.style = {fill: "black", font: "16px PetMe64"};
+```
 
 Pixi는 Canvas Drawing API를 사용하여 보이지 않는 임시 캔버스 요소에 텍스트를 렌더링하여 텍스트 개체를 만듭니다. 그런 다음 캔버스를 WebGL 텍스처로 변환하여 sprite에 매핑 할 수 있습니다. 그래서 텍스트의 색상을 문자열로 묶어야 합니다. 다음은 Canvas Drawing API 색상 값입니다. 캔버스 색상 값과 마찬가지로 "빨강"또는 "녹색"과 같은 일반적인 색상의 단어를 사용하거나 rgba, hsla 또는 16 진수 값을 사용할 수 있습니다.
 
-Pixi는 또한 긴 줄의 텍스트를 래핑 할 수 있습니다. 텍스트의 wordWrap 스타일 속성을 true로 설정한 다음 wordWrapWidth를 픽셀의 최대 길이 (텍스트 줄이어야 함)로 설정합니다. align 속성을 사용하여 여러 줄 텍스트의 맞춤을 설정합니다.
+Pixi는 또한 긴 줄의 텍스트를 래핑 할 수 있습니다. 텍스트의 `wordWrap` 스타일 속성을 `true`로 설정한 다음 `wordWrapWidth`를 픽셀의 최대 길이 (텍스트 줄이어야 함)로 설정합니다. `align` 속성을 사용하여 여러 줄 텍스트의 맞춤을 설정합니다.
+
+```js
 message.style = {wordWrap: true, wordWrapWidth: 100, align: center};
+```
 
-(참고 : align은 한 줄 텍스트에 영향을 주지 않습니다.)
+(참고 : `align`은 한 줄 텍스트에 영향을 주지 않습니다.)
 
-사용자 정의 글꼴 파일을 사용하려면 CSS @ font-face 규칙을 사용하여 글꼴 파일을 Pixi 응용 프로그램이 실행되는 HTML 페이지에 연결하십시오.
+사용자 정의 글꼴 파일을 사용하려면 CSS `@font-face` 규칙을 사용하여 글꼴 파일을 Pixi 응용 프로그램이 실행되는 HTML 페이지에 연결하십시오.
+
+```js
 @font-face {
   font-family: "fontFamilyName";
   src: url("fonts/fontFile.ttf");
 }
-이 @ font-face 규칙을 HTML 페이지의 CSS 스타일 시트에 추가하십시오.
+```
 
-Pixi는 또한 비트 맵 글꼴을 지원합니다. Pixi의 로더를 사용하여 JSON 또는 이미지 파일을 로드하는 것과 같은 방법으로 Bitmap 글꼴 XML 파일을 로드 할 수 있습니다.
+이 `@font-face` 규칙을 HTML 페이지의 CSS 스타일 시트에 추가하십시오.
 
+[Pixi는 또한 비트 맵 글꼴을 지원합니다.](http://pixijs.download/release/docs/PIXI.extras.BitmapText.html) Pixi의 로더를 사용하여 JSON 또는 이미지 파일을 로드하는 것과 같은 방법으로 Bitmap 글꼴 XML 파일을 로드 할 수 있습니다.
 
-충돌감지
-수 많은 다양성의 그래픽 객체를 만드는 방법을 알았지만, 어떻게 사용할 수 있습니까? 재미있는 일은 간단한 충돌 감지 시스템을 구축하는 것입니다. hitTestRectangle이라는 사용자 정의 함수를 사용하여 두 개의 직사각형 Pixi sprite가 접촉하는지 여부를 검사할 수 있습니다.
+<a id='collision'></a>
+### 충돌감지
+
+수 많은 다양성의 그래픽 객체를 만드는 방법을 알았지만, 어떻게 사용할 수 있습니까? 재미있는 일은 간단한 **collision detection** 시스템을 구축하는 것입니다. `hitTestRectangle`이라는 사용자 정의 함수를 사용하여 두 개의 직사각형 Pixi sprite가 접촉하는지 여부를 검사할 수 있습니다.
+
+```js
 hitTestRectangle(spriteOne, spriteTwo)
+```
 
-중복되면 hitTestRectangle이 true를 반환합니다. if문과 함께 hitTestRectangle을 사용하여 다음과 같이 두 가지 sprite 간의 충돌을 확인할 수 있습니다.
+중복되면 `hitTestRectangle`이 `true`를 반환합니다. `if`문과 함께 `hitTestRectangle`을 사용하여 다음과 같이 두 가지 sprite 간의 충돌을 확인할 수 있습니다.
+
+```js
 if (hitTestRectangle(cat, box)) {
   //There's a collision
 } else {
   //There's no collision
 }
-보시다시피, hitTestRectangle은 방대한 게임 디자인 세계의 시작입니다.
+```
 
-hitTestRectangle을 사용하는 방법에 대한 예제를 보려면 예제 폴더에서 collisionDetection.html 파일을 실행하십시오. 화살표 키를 사용하여 고양이를 이동하십시오. 고양이가 박스를 친다면, 상자가 빨간색이 되고 "Hit!" 텍스트 개체에 의해 표시됩니다.
+보시다시피, `hitTestRectangle`은 방대한 게임 디자인 세계의 시작입니다.
 
- 
-이미 모든 요소를 만드는 모든 코드와 고양이를 움직이는 키보드 컨트롤 시스템을 보았습니다. 유일하게 새로운 점은 hitTestRectangle이 충돌을 확인하기 위해 play 함수 내에서 사용되는 방법입니다.
+`hitTestRectangle`을 사용하는 방법에 대한 예제를 보려면 `examples` 폴더에서 `collisionDetection.html` 파일을 실행하십시오. 화살표 키를 사용하여 고양이를 이동하십시오. 고양이가 박스를 친다면, 상자가 빨간색이 되고 "Hit!" 텍스트 개체에 의해 표시됩니다.
 
+![Displaying text](/examples/images/screenshots/25.png)
+
+이미 모든 요소를 만드는 모든 코드와 고양이를 움직이는 키보드 컨트롤 시스템을 보았습니다. 유일하게 새로운 점은 `hitTestRectangle`이 충돌을 확인하기 위해 `play` 함수 내에서 사용되는 방법입니다.
+
+```js
 function play(delta) {
 
   //use the cat's velocity to make it move
@@ -2146,17 +2258,35 @@ function play(delta) {
     box.tint = 0xccff99;
   }
 }
-play 함수는 초당 60회 게임 루프에 의해 호출되기 때문에 이 if문은 고양이와 상자 사이의 충돌을 지속적으로 확인합니다. hitTestRectangle이 true이면 텍스트 message 객체는 text를 사용하여 "Hit"를 표시합니다.
+```
+
+`play` 함수는 초당 60회 게임 루프에 의해 호출되기 때문에 이 if문은 고양이와 상자 사이의 충돌을 지속적으로 확인합니다. `hitTestRectangle`이 `true`이면 텍스트 `message` 객체는 `text` 사용하여 "Hit"를 표시합니다.
+
+```js
 message.text = "Hit!";
-상자의 tint 속성을 16 진수 빨간색 값으로 설정하여 상자의 색이 녹색에서 빨간색으로 변경됩니다.
+```
+
+상자의 `tint` 속성을 16 진수 빨간색 값으로 설정하여 상자의 색이 녹색에서 빨간색으로 변경됩니다.
+
+```js
 box.tint = 0xff3300;
+```
+
 충돌이 없으면 메시지와 상자는 원래 상태로 유지됩니다.
+
+```js
 message.text = "No collision...";
 box.tint = 0xccff99;
+```
+
 이 코드는 매우 간단하지만 갑작스럽게 완전히 살아있는 대화식 세계를 만들었습니다. 이것은 거의 마술과 같습니다! 그리고 놀랍게도 Pixi로 게임을 시작하는 데 필요한 모든 기술을 갖추었습니다.
 
-hitTestRectangle 함수
-그러나 hitTestRectangle 함수는 어떻습니까? 그것은 무엇을 하고 어떻게 작동합니까? 이 작업과 같은 충돌 감지 알고리즘의 세부 사항은 이 자습서의 범위를 벗어납니다. (정말로 알고 싶다면, 이 책의 내용을 찾아보십시오.) 가장 중요한 점은 사용 방법을 알고 있다는 것입니다. 그러나 참조 용으로, 그리고 궁금한 점이 있는 경우, 여기에 완전한 hitTestRectangle 함수 정의가 있습니다. 코멘트에서 무엇을 하고 있는지 알 수 있나요?
+<a id='hittest'></a>
+### hitTestRectangle 함수
+
+그러나 `hitTestRectangle` 함수는 어떻습니까? 그것은 무엇을 하고 어떻게 작동합니까? 이 작업과 같은 충돌 감지 알고리즘의 세부 사항은 이 자습서의 범위를 벗어납니다. (정말로 알고 싶다면, [이 책](https://www.apress.com/us/book/9781430258001)의 내용을 찾아보십시오.) 가장 중요한 점은 사용 방법을 알고 있다는 것입니다. 그러나 참조 용으로, 그리고 궁금한 점이 있는 경우, 여기에 완전한 `hitTestRectangle` 함수 정의가 있습니다. 코멘트에서 무엇을 하고 있는지 알 수 있나요?
+
+```js
 function hitTestRectangle(r1, r2) {
 
   //Define the variables we'll need to calculate
@@ -2207,15 +2337,23 @@ function hitTestRectangle(r1, r2) {
   //`hit` will be either `true` or `false`
   return hit;
 };
+```
 
 사례 연구 : Treasure Hunter
-지금까지 당신이 지금 게임을 만들기 시작할 때 필요한 모든 기술을 가지고 있다고 말했습니다. 날 못 믿겠다면, 증명해 보이겠습니다! Treasure Hunter라는 간단한 오브젝트 컬렉션과 적의 회피 게임을 만드는 방법을 자세히 살펴보겠습니다. (examples 폴더에서 찾을 수 있습니다.)
- 
+---------------
+
+지금까지 당신이 지금 게임을 만들기 시작할 때 필요한 모든 기술을 가지고 있다고 말했습니다. 날 못 믿겠다면, 증명해 보이겠습니다! **Treasure Hunter**라는 간단한 오브젝트 컬렉션과 적의 회피 게임을 만드는 방법을 자세히 살펴보겠습니다. (`examples` 폴더에서 찾을 수 있습니다.)
+
+![Treasure Hunter](/examples/images/screenshots/26.png)
+
 Treasure Hunter는 지금까지 배운 도구를 사용하여 만들 수 있는 가장 간단한 완벽한 게임 중 하나의 좋은 예입니다. 탐색기가 보물을 찾아 출구로 나갈 수 있도록 키보드 화살표 키를 사용하세요. 6 개의 얼룩 몬스터가 지하 감옥 벽 사이를 오르락 내리락하며, 탐험가를 친다면 반투명 상태가 되고 오른쪽 상단의 체력이 줄어든다. 모든 체력이 모두 소모되면 "You Lost!"가 화면에 표시됩니다. 탐색기가 보물이 있는 출구에 도달하면 "You Won!"이 표시됩니다. Treasure Hunter는 기본 프로토 타입이지만 텍스처 맵 그래픽, 상호 작용, 충돌 및 여러 게임 장면과 같은 훨씬 더 큰 게임에서 찾을 수 있는 대부분의 요소를 포함합니다. 게임을 어떻게 조립했는지를 둘러보고 자신의 게임 중 하나의 출발점으로 사용할 수 있도록 알아보겠습니다.
 
 
-코드 구조
-treasureHunter.html 파일을 열면 모든 게임 코드가 하나의 큰 파일에 있음을 알 수 있습니다. 다음은 모든 코드가 어떻게 구성되어 있는지에 대한 전반적인 내용입니다.
+### 코드 구조
+
+`treasureHunter.html` 파일을 열면 모든 게임 코드가 하나의 큰 파일에 있음을 알 수 있습니다. 다음은 모든 코드가 어떻게 구성되어 있는지에 대한 전반적인 내용입니다.
+
+```js
 //Setup Pixi and load the texture atlas files - call the `setup`
 //function when they've loaded
 
@@ -2238,12 +2376,18 @@ function end() {
 
 //The game's helper functions:
 //`keyboard`, `hitTestRectangle`, `contain` and `randomInt`
+```
+
 게임의 세계지도를 사용하여 각 섹션의 작동 방식을 살펴보십시오.
 
-setup 기능에서 게임 초기화
-텍스처 아트 레이 이미지가 로드되면 setup 기능이 실행됩니다. 한 번만 실행되며 게임에 대한 일회성 설정 작업을 수행할 수 있습니다. 객체, 스프라이트, 게임 장면을 만들고 초기화하고, 데이터 배열을 채우거나, 로드된 JSON 게임 데이터를 해석할 수 있는 좋은 장소입니다.
+<a id='initialize'></a>
+### setup 기능에서 게임 초기화
 
-Treasure Hunter의 셋업 기능과 수행하는 작업을 간략하게 살펴보았습니다.
+텍스처 아트 레이 이미지가 로드되면 `setup` 기능이 실행됩니다. 한 번만 실행되며 게임에 대한 일회성 설정 작업을 수행할 수 있습니다. 객체, 스프라이트, 게임 장면을 만들고 초기화하고, 데이터 배열을 채우거나, 로드된 JSON 게임 데이터를 해석할 수 있는 좋은 장소입니다.
+
+Treasure Hunter의 `setup` 기능과 수행하는 작업을 간략하게 살펴보았습니다.
+
+```js
 function setup() {
   //Create the `gameScene` group
   //Create the `door` sprite
@@ -2261,24 +2405,41 @@ function setup() {
   //Start the game loop 
   app.ticker.add(delta => gameLoop(delta));
 }
-코드의 마지막 두 줄인 state = play; 아마도 gameLoop ()이 가장 중요할 것입니다. GameLoop을 Pixi의 시세 표시기에 추가하면 게임 엔진에서 전환되고 play 함수가 연속 루프에서 호출되도록 합니다. 그러나 이것이 작동하는 방법을 살펴보기 전에 setup 함수 내부의 특정 코드가 무엇인지 살펴보겠습니다.
+```
 
-게임 장면 만들기
-setup 함수는 gameScene 및 gameOverScene이라는 두 개의 Container 그룹을 만듭니다. 이들 각각은 무대에 추가됩니다.
+코드의 마지막 두 줄인 `state = play;` 아마도 `gameLoop()` 이 가장 중요할 것입니다. `gameLoop`을 Pixi의 시세 표시기에 추가하면 게임 엔진에서 전환되고 `play` 함수가 연속 루프에서 호출되도록 합니다. 그러나 이것이 작동하는 방법을 살펴보기 전에 `setup` 함수 내부의 특정 코드가 무엇인지 살펴보겠습니다.
+
+<a id='gamescene'></a>
+#### 게임 장면 만들기
+
+`setup` 함수는 `gameScene` 및 `gameOverScene`이라는 두 개의 `Container` 그룹을 만듭니다. 이들 각각은 무대에 추가됩니다.
+
+```js
 gameScene = new Container();
 app.stage.addChild(gameScene);
 
 gameOverScene = new Container();
 app.stage.addChild(gameOverScene);
-메인 게임의 일부인 모든 sprites가 gameScene 그룹에 추가됩니다. 게임이 끝날 때 표시해야 하는 텍스트 위에 있는 게임은 gameOverScene 그룹에 추가됩니다.
+```
 
+메인 게임의 일부인 모든 sprites가 `gameScene` 그룹에 추가됩니다. 게임이 끝날 때 표시해야 하는 텍스트 위에 있는 게임은 `gameOverScene` 그룹에 추가됩니다.
 
- 
-setup 함수에서 생성되었지만 게임이 처음 시작될 때 gameOverScene이 보이지 않아야 하므로 visible 속성이 false로 초기화됩니다.
+![Displaying text](/examples/images/screenshots/27.png)
+
+`setup` 함수에서 생성되었지만 게임이 처음 시작될 때 `gameOverScene`이 보이지 않아야 하므로 `visible` 속성이 `false`로 초기화됩니다.
+
+```js
 gameOverScene.visible = false;
-게임이 끝나면 gameOverScene의 visible 속성이 true로 설정되어 게임이 끝날 때 나타나는 텍스트를 표시합니다.
-지하 감옥, 문, 탐험가 및 보물 만들기
-플레이어, 출구 문, 보물 상자 및 지하 감옥 배경 이미지는 모두 텍스처 아트 프레임으로 만들어진 sprites입니다. 매우 중요하게, 그들은 모두 gameScene의 자식으로 추가됩니다.
+```
+
+게임이 끝나면 `gameOverScene`의 `visible` 속성이 `true`로 설정되어 게임이 끝날 때 나타나는 텍스트를 표시합니다.
+
+<a id='makingdungon'></a>
+#### 지하 감옥, 문, 탐험가 및 보물 만들기
+
+플레이어, 출구 문, 보물 상자 및 지하 감옥 배경 이미지는 모두 텍스처 아트 프레임으로 만들어진 sprites입니다. 매우 중요하게, 그들은 모두 `gameScene`의 자식으로 추가됩니다.
+
+```js
 //Create an alias for the texture atlas frame ids
 id = resources["images/treasureHunter.json"].textures;
 
@@ -2304,9 +2465,16 @@ treasure = new Sprite(id["treasure.png"]);
 treasure.x = gameScene.width - treasure.width - 48;
 treasure.y = gameScene.height / 2 - treasure.height / 2;
 gameScene.addChild(treasure);
-gameScene 그룹에 함께 모아두면 게임이 끝났을 때 gameScene을 숨기고 gameOverScene을 쉽게 표시할 수 있습니다.
-얼룩덜룩한 괴물 만들기
-6 개의 얼룩 몬스터가 반복적으로 만들어집니다. 각 얼룩에는 임의의 초기 위치와 속도가 부여됩니다. 수직 속도는 각 얼룩에 대해 1 또는 -1로 교대로 곱해지며, 그 결과 각 괴물은 그 반대 방향으로 움직입니다. 생성된 각 얼룩 몬스터는 blobs 라는 배열로 푸시됩니다.
+```
+
+`gameScene` 그룹에 함께 모아두면 게임이 끝났을 때 `gameScene`을 숨기고 `gameOverScene`을 쉽게 표시할 수 있습니다.
+
+<a id='makingblob'></a>
+#### 얼룩덜룩한 괴물 만들기
+
+6 개의 얼룩 몬스터가 반복적으로 만들어집니다. 각 얼룩에는 임의의 초기 위치와 속도가 부여됩니다. 수직 속도는 각 얼룩에 대해 `1` 또는 `-1`로 교대로 곱해지며, 그 결과 각 괴물은 그 반대 방향으로 움직입니다. 생성된 각 얼룩 몬스터는 `blobs` 라는 배열로 푸시됩니다.
+
+```js
 let numberOfBlobs = 6,
     spacing = 48,
     xOffset = 150,
@@ -2349,9 +2517,14 @@ for (let i = 0; i < numberOfBlobs; i++) {
   //Add the blob to the `gameScene`
   gameScene.addChild(blob);
 }
+```
 
-HP표시 바 만들기
-Treasure Hunter를 사용하면 탐색기가 적들 중 하나에 닿았을 때, 화면 오른쪽 상단에 있는 HP 바가 줄어 듭니다. 이 HP 바는 어떻게 만들어질까요? 정확히 같은 위치에 겹치는 두 개의 직사각형입니다. 뒤에 검은 색 사각형이 있고 앞쪽에 빨간색 직사각형이 있습니다. 그것들은 하나의 healthBar 그룹으로 함께 그룹화됩니다. healthBar가 gameScene에 추가되고 무대에 배치됩니다.
+<a id='healthbar'></a>
+####HP표시 바 만들기
+
+Treasure Hunter를 사용하면 탐색기가 적들 중 하나에 닿았을 때, 화면 오른쪽 상단에 있는 HP 바가 줄어 듭니다. 이 HP 바는 어떻게 만들어질까요? 정확히 같은 위치에 겹치는 두 개의 직사각형입니다. 뒤에 검은 색 사각형이 있고 앞쪽에 빨간색 직사각형이 있습니다. 그것들은 하나의 healthBar 그룹으로 함께 그룹화됩니다. `healthBar`가 `gameScene`에 추가되고 무대에 배치됩니다.
+
+```js
 //Create the health bar
 healthBar = new PIXI.Container();
 healthBar.position.set(stage.width - 170, 4)
@@ -2372,13 +2545,28 @@ outerBar.endFill();
 healthBar.addChild(outerBar);
 
 healthBar.outer = outerBar;
-outer라는 속성이 healthBar에 추가된 것을 볼 수 있습니다. outerBar (빨간색 직사각형)를 참조하기만 하면 나중에 액세스하는 것이 편리합니다.
+```
+
+`outer`라는 속성이 `healthBar`에 추가된 것을 볼 수 있습니다. `outerBar` (빨간색 직사각형)를 참조하기만 하면 나중에 액세스하는 것이 편리합니다.
+
+```js
 healthBar.outer = outerBar;
-당신은 이것을 할 필요는 없지만, 못할 건 없습니다! 즉 빨간색 outerBar의 너비를 제어하려면 다음과 같은 코드를 어려움 없이 작성할 수 있습니다.
+```
+
+당신은 이것을 할 필요는 없지만, 못할 건 없습니다! 즉 빨간색 `outerBar`의 너비를 제어하려면 다음과 같은 코드를 어려움 없이 작성할 수 있습니다.
+
+```js
 healthBar.outer.width = 30;
+```
+
 꽤 깔끔하고 읽기 쉽기 때문에 우리는 이대로 할 겁니다!
-메시지 텍스트 만들기
-게임이 끝나면 게임의 결과에 따라 "You won!"또는 "You lost!"라는 텍스트가 표시됩니다. 텍스트 sprites를 사용하여 이를 gameOverScene에 추가합니다. 게임이 시작될 때 gameOverScene의 visible 속성이 false로 설정되기 때문에 이 텍스트를 볼 수 없습니다. 다음은 메시지 텍스트를 생성하고 gameOverScene에 추가하는 setup 함수의 코드입니다.
+
+<a id='message'></a>
+#### 메시지 텍스트 만들기
+
+게임이 끝나면 게임의 결과에 따라 "You won!" 또는 "You lost!" 라는 텍스트가 표시됩니다. 텍스트 sprite를 사용하여 이를 `gameOverScene`에 추가합니다. 게임이 시작될 때 `gameOverScene`의 `visible` 속성이 `false`로 설정되기 때문에 이 텍스트를 볼 수 없습니다. 다음은 메시지 텍스트를 생성하고 `gameOverScene`에 추가하는 `setup` 함수의 코드입니다.
+
+```js
 let style = new TextStyle({
     fontFamily: "Futura",
     fontSize: 64,
@@ -2388,9 +2576,14 @@ message = new Text("The End!", style);
 message.x = 120;
 message.y = app.stage.height / 2 - 32;
 gameOverScene.addChild(message);
+```
 
-게임하기
-sprites 이동을 만드는 모든 게임 논리와 코드는 연속 루프에서 실행되는 play 함수 내에서 발생합니다. 다음은 play 기능의 개요입니다.
+<a id='playing'></a>
+### 게임하기
+
+sprites 이동을 만드는 모든 게임 논리와 코드는 연속 루프에서 실행되는 `play` 함수 내에서 발생합니다. 다음은 `play` 기능의 개요입니다.
+
+```js
 function play(delta) {
   //Move the explorer and contain it inside the dungeon
   //Move the blob monsters
@@ -2400,22 +2593,38 @@ function play(delta) {
   //Decide whether the game has been won or lost
   //Change the game `state` to `end` when the game is finished
 }
+```
+
 이 모든 기능이 어떻게 작동하는지 알아보겠습니다.
 
-탐색기 이동
-탐색기는 키보드를 사용하여 제어되며 이를 수행하는 코드는 이전에 학습한 키보드 제어 코드와 매우 유사합니다. keyboard 개체는 탐색기의 속도를 수정하며 해당 속도는 play 기능 내의 탐색기 위치에 추가됩니다.
+<a id='movingexplorer'></a>
+### 탐색기 이동
+
+탐색기는 키보드를 사용하여 제어되며 이를 수행하는 코드는 이전에 학습한 키보드 제어 코드와 매우 유사합니다. `keyboard` 개체는 탐색기의 속도를 수정하며 해당 속도는 `play` 기능 내의 탐색기 위치에 추가됩니다.
+
+```js
 explorer.x += explorer.vx;
 explorer.y += explorer.vy;
+```
 
-움직임 포함
+<a id='containingmovement'></a>
+#### 움직임 포함
+
 그러나 새로운 점은 탐색기의 움직임이 지하 감옥의 벽 안에 포함되어 있다는 것입니다. 녹색 윤곽선은 탐색기의 동작 한계를 보여줍니다.
- 
-그것은 contain이라는 커스텀 함수의 도움으로 끝납니다.
+
+![Displaying text](/examples/images/screenshots/28.png)
+
+그것은 `contain`이라는 커스텀 함수의 도움으로 끝납니다.
+
+```js
 contain(explorer, {x: 28, y: 10, width: 488, height: 480});
+```
 
-contain은 두 개의 인수를 취합니다. 첫 번째는 유지하고자 하는 sprite입니다. 두 번째는 사각형 영역을 정의하는 x, y, width 및 height 속성이 있는 객체입니다. 이 예제에서, 포함하는 객체는 스테이지에서 약간 오프셋 되어 있고 스테이지보다 작은 영역을 정의합니다. 던전 벽의 크기와 일치합니다.
+`contain`은 두 개의 인수를 취합니다. 첫 번째는 유지하고자 하는 sprite입니다. 두 번째는 사각형 영역을 정의하는 `x`, `y`, `width` 및 `height` 속성이 있는 객체입니다. 이 예제에서, 포함하는 객체는 스테이지에서 약간 오프셋 되어 있고 스테이지보다 작은 영역을 정의합니다. 던전 벽의 크기와 일치합니다.
 
-다음은 이 모든 작업을 수행하는 contain 함수입니다. 이 함수는 sprite가 포함된 객체의 경계를 넘었는지 확인합니다. 코드가 있으면 sprite가 해당 경계로 다시 이동합니다. contain 함수는 sprite가 경계선의 어느 쪽에 닿았는지에 따라 "top", "right", "bottom"또는 "left"값을 가진 co 변수를 반환합니다. (sprite가 경계선에 닿지 않으면 collision은 undefined 됩니다.)
+다음은 이 모든 작업을 수행하는 `contain` 함수입니다. 이 함수는 sprite가 포함된 객체의 경계를 넘었는지 확인합니다. 코드가 있으면 sprite가 해당 경계로 다시 이동합니다. `contain` 함수는 sprite가 경계선의 어느 쪽에 닿았는지에 따라 "top", "right", "bottom"또는 "left"값을 가진 `collision` 변수를 반환합니다. (sprite가 경계선에 닿지 않으면 `collision`은 `undefined` 됩니다.)
+
+```js
 function contain(sprite, container) {
 
   let collision = undefined;
@@ -2447,11 +2656,16 @@ function contain(sprite, container) {
   //Return the `collision` value
   return collision;
 }
-collision 반환 값이 코드에서 어떻게 사용되어 위쪽 및 아래쪽 던전 벽 사이에서 얼룩덜룩 한 몬스터가 앞뒤로 튀어 오르게 하는지 볼 수 있습니다.
+```
 
-괴물 이동하기
+`collision` 반환 값이 코드에서 어떻게 사용되어 위쪽 및 아래쪽 던전 벽 사이에서 얼룩덜룩 한 몬스터가 앞뒤로 튀어 오르게 하는지 볼 수 있습니다.
 
-play 기능은 또한 얼룩 몬스터를 움직이고, 던전 벽 안에 포함시키고, 플레이어와의 충돌을 확인합니다. 방울이 던전의 상단 또는 하단 벽에 충돌하면 방향이 바뀝니다. 이 모든 작업은 forEach 루프를 사용하여 수행됩니다. 각 루프의 blob 배열에 있는 각 blobs sprites를 반복합니다.
+<a id='movingmonsters'></a>
+### 괴물 이동하기
+
+`play` 기능은 또한 얼룩 몬스터를 움직이고, 던전 벽 안에 포함시키고, 플레이어와의 충돌을 확인합니다. 방울이 던전의 상단 또는 하단 벽에 충돌하면 방향이 바뀝니다. 이 모든 작업은 `forEach` 루프를 사용하여 수행됩니다. 각 루프의 `blob` 배열에 있는 각 `blobs` sprites를 반복합니다.
+
+```js
 blobs.forEach(function(blob) {
 
   //Move the blob
@@ -2472,22 +2686,38 @@ blobs.forEach(function(blob) {
     explorerHit = true;
   }
 });
-위의 코드에서 contain 함수의 반환 값을 사용하여 얼룩이 벽에서 튀어나오게 하는 방법을 볼 수 있습니다. blobHitsWall이라는 변수는 반환 값을 캡처하는 데 사용됩니다.
-let blobHitsWall = contain(blob, {x: 28, y: 10, width: 488, height: 480});
-blobHitsWall은 일반적으로 undefined 됩니다. 그러나 얼룩이 꼭대기 벽에 닿으면, blobHitsWall의 값은 "위쪽"이 됩니다. 얼룩이 바닥 벽에 닿으면 blobHitsWall의 값은 "bottom"이 됩니다. 이러한 경우 중 하나라도 true이면, 속도를 반대로 하여 방향을 바꿀 수 있습니다. 이 작업을 수행하는 코드는 다음과 같습니다
+```
 
+위의 코드에서 `contain` 함수의 반환 값을 사용하여 얼룩이 벽에서 튀어나오게 하는 방법을 볼 수 있습니다. `blobHitsWall`이라는 변수는 반환 값을 캡처하는 데 사용됩니다.
+
+```js
+let blobHitsWall = contain(blob, {x: 28, y: 10, width: 488, height: 480});
+```
+
+`blobHitsWall`은 일반적으로 `undefined` 됩니다. 그러나 얼룩이 꼭대기 벽에 닿으면, `blobHitsWall`의 값은 "top"이 됩니다. 얼룩이 바닥 벽에 닿으면 `blobHitsWall`의 값은 "bottom"이 됩니다. 이러한 경우 중 하나라도 `true`이면, 속도를 반대로 하여 방향을 바꿀 수 있습니다. 이 작업을 수행하는 코드는 다음과 같습니다
+
+```js
 if (blobHitsWall === "top" || blobHitsWall === "bottom") {
   blob.vy *= -1;
 }
-블롭의 vy (수직 속도) 값에 -1을 곱하면 이동 방향이 바뀝니다.
+```
 
-충돌 확인
+blob의 `vy` (수직 속도) 값에 `-1`을 곱하면 이동 방향이 바뀝니다.
 
-위 루프의 코드는 hitTestRectangle을 사용하여 적군이 탐색기를 건드렸는지 파악합니다.
+<a id='checkingcollisions'></a>
+### 충돌 확인
+
+위 루프의 코드는 `hitTestRectangle`을 사용하여 적군이 탐색기를 건드렸는지 파악합니다.
+
+```js
 if(hitTestRectangle(explorer, blob)) {
   explorerHit = true;
 }
-hitTestRectangle이 true를 반환하면, 충돌이 있었고 explorerHit라는 변수가 true로 설정되었음을 의미합니다. explorerHit이 true 인 경우 play 기능은 탐색기를 반투명 상태로 만들고 HP 바의 너비를 1 픽셀씩 줄입니다.
+```
+
+`hitTestRectangle`이 `true`를 반환하면, 충돌이 있었고 `explorerHit`라는 변수가 `true`로 설정되었음을 의미합니다. `explorerHit`이 `true` 인 경우 `play` 기능은 탐색기를 반투명 상태로 만들고 `health` 바의 너비를 1 픽셀씩 줄입니다.
+
+```js
 if(explorerHit) {
 
   //Make the explorer semi-transparent
@@ -2501,77 +2731,129 @@ if(explorerHit) {
   //Make the explorer fully opaque (non-transparent) if it hasn't been hit
   explorer.alpha = 1;
 }
+```
 
-explorerHit가 false의 경우, 탐색기의 alpha property는 1로 유지되어 완전하게 불투명하게 됩니다.
-놀이 기능은 또한 보물 상자와 탐색기 사이의 충돌을 검사합니다. 히트가 있다면, treasure은 약간의 오프셋과 함께 탐색기의 위치로 설정됩니다. 탐험가가 보물을 운반하는 것처럼 보입니다.
- 
+`explorerHit`가 `false`의 경우, 탐색기의 `alpha` property는 1로 유지되어 완전하게 불투명하게 됩니다.
+
+`play` 기능은 또한 보물 상자와 탐색기 사이의 충돌을 검사합니다. 상대한테 맞았다면,  `treasure`은 약간의 offset과 함께 탐색기의 위치로 설정됩니다. 탐험가가 보물을 운반하는 것처럼 보입니다.
+
+![Displaying text](/examples/images/screenshots/29.png)
+
 이 작업을 수행하는 코드는 다음과 같습니다.
+
+```js
 if (hitTestRectangle(explorer, treasure)) {
   treasure.x = explorer.x + 8;
   treasure.y = explorer.y + 8;
 }
+```
 
-출구 문에 도달하여 게임을 종료한다.
+### 출구 문에 도달하면 게임을 종료하기.
 
-게임을 끝낼 수 있는 두 가지 방법이 있습니다. 보물을 출구로 나르면 이길 수 있고, 건강이 떨어지면 잃을 수 있습니다.
-게임에서 이기려면 보물 상자가 출구 문에 닿아야 합니다. 이 경우 게임 state가 end가 되면, message 텍스트에 "You won"이 표시됩니다.
+게임을 끝낼 수 있는 두 가지 방법이 있습니다 : 보물을 출구로 나르면 이길 수 있고, HP가 떨어지면 지게 됩니다.
+
+게임에서 이기려면 보물 상자가 출구 문에 닿아야 합니다. 이 경우 게임 `state`가 `end`가 되면, `message` 텍스트에 "You won"이 표시됩니다.
+
+```js
 if (hitTestRectangle(treasure, door)) {
   state = end;
   message.text = "You won!";
 }
-HP 상태가 떨어지면 게임을 지게 됩니다. 게임 state도 end 되고, 메시지 message에 "잃어버린 물건!"이 표시됩니다.
+```
+
+HP 상태가 떨어지면 게임을 지게 됩니다. 게임 `state`도 `end` 되고, `message` 텍스트에 "You Lost!"라고 표시됩니다.
+
+```js
 if (healthBar.outer.width < 0) {
   state = end;
   message.text = "You lost!";
 }
+```
+
 그러나 이것은 무엇을 의미할까요?
+
+```js
 state = end;
-이전 예제에서 gameLoop는 초당 60 회 state라는 함수를 지속적으로 업데이트한다는 것을 기억할 것입니다. gameLoop가 수행하는 게임은 다음과 같습니다.
+```
+
+이전 예제에서 `gameLoop`는 초당 60 회 `state`라는 함수를 지속적으로 업데이트한다는 것을 기억할 것입니다. `gameLoop`가 수행하는 게임은 다음과 같습니다.
+
+```js
 function gameLoop(delta){
 
   //Update the current game state:
   state(delta);
 }
-또한 우리는 처음에 state의 값을 play로 설정한다는 것을 기억할 것입니다. 이것이 바로 play 함수가 루프에서 실행되는 이유입니다. state를 end로 설정함으로써 우리는 코드가 루프로 실행되는 end라는 다른 함수를 원한다고 말하고 있습니다. 더 큰 게임에서는 tileScene 상태를 가질 수 있으며, leveOne, levelTwo 및 levelThree와 같은 각 게임 레벨의 상태를 나타낼 수 있습니다.
+```
+
+또한 우리는 처음에 `state`의 값을 `play`로 설정한다는 것을 기억할 것입니다. 이것이 바로 `play` 함수가 루프에서 실행되는 이유입니다. `state`를 `end`로 설정함으로써 우리는 코드가 루프로 실행되는 `end`라는 다른 함수를 원한다고 말하고 있습니다. 더 큰 게임에서는 `tileScene` 상태를 가질 수 있으며, `leveOne`, `levelTwo` 및 `levelThree`와 같은 각 게임 레벨의 상태를 나타낼 수 있습니다.
+
 그렇다면 그 end 기능은 무엇입니까? 바로 여기 있습니다!
+
+```js
 function end() {
   gameScene.visible = false;
   gameOverScene.visible = true;
 }
-게임 장면의 가시성을 뒤집을 뿐입니다. 이것은 gameScene을 숨기고 게임이 끝나면, gameOverScene을 표시합니다.
-이것은 게임의 상태를 전환하는 방법에 대한 아주 간단한 예이지만 게임에서 원하는만큼의 게임 상태를 유지하고 필요한만큼의 코드로 채울 수 있습니다. 그냥 루프에서 실행하려는 함수의 state 값을 변경하십시오.
+```
+
+게임 장면의 가시성을 뒤집을 뿐입니다. 이것은 `gameScene`을 숨기고 게임이 끝나면, `gameOverScene`을 표시합니다.
+이것은 게임의 상태를 전환하는 방법에 대한 아주 간단한 예이지만 게임에서 원하는만큼의 게임 상태를 유지하고 필요한만큼의 코드로 채울 수 있습니다. 그냥 루프에서 실행하려는 함수의 `state` 값을 변경하십시오.
 그리고 그것은 Treasure Hunter의 모든 것입니다! 조금 더 많은 작업을 하면 이 간단한 프로토 타입을 풀 게임으로 바꿀 수 있습니다. 시도해보십시오!
 
+<a id='spriteproperties'></a>
 Sprites에 대한 추가 정보
-지금까지 sprite의 위치와 모양을 많이 제어할 수 있는 x, y, visible, rotation과 같은 sprites 속성을 사용하는 방법을 배웠습니다. 그러나 Pixi Sprites에는 재미있는 많은 유용한 속성이 있습니다. 다음은 전체 목록입니다. 
-Pixi의 클래스 상속 시스템은 어떻게 작동합니까? (클래스란 무엇이며 상속은 무엇입니까? 알아보려면 이 링크를 클릭하십시오.) Pixi의 sprites는 이 체인을 따르는 상속 모델을 기반으로 작성됩니다.
+---------------
+
+지금까지 sprite의 위치와 모양을 많이 제어할 수 있는 `x`, `y`, `visible`, `rotation`과 같은 sprites 속성을 사용하는 방법을 배웠습니다. 그러나 Pixi Sprites에는 재미있는 많은 유용한 속성이 있습니다. [다음은 전체 목록입니다.](http://pixijs.download/release/docs/PIXI.Sprite.html)
+
+Pixi의 클래스 상속 시스템은 어떻게 작동합니까? (**클래스**란 무엇이며 **상속**은 무엇입니까? [알아보려면 이 링크를 클릭하십시오.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript)) Pixi의 sprites는 이 체인을 따르는 상속 모델을 기반으로 작성됩니다.
+
+```
 DisplayObject > Container > Sprite
-상속은 체인의 나중에 클래스가 체인의 이전 클래스에서 속성과 메서드를 사용한다는 것을 의미합니다. 즉, Sprite가 체인의 마지막 클래스인 경우에도 고유한 속성 외에도 DisplayObject 및 Container와 동일한 모든 속성을 갖습니다. 가장 기본적인 클래스는 DisplayObject입니다. DisplayObject인 것을 스테이지에서 렌더링 할 수 있습니다. Container는 상속 체인의 다음 클래스입니다. DisplayObject는 다른 DisplayObjects의 컨테이너 역할을 할 수 있습니다. 세 번째 체인은 Sprite 클래스입니다. Sprite는 무대에 표시될 수 있으며 다른 Sprites에 대한 containers가 될 수 있습니다.
+```
+
+상속은 체인의 나중에 클래스가 체인의 이전 클래스에서 속성과 메서드를 사용한다는 것을 의미합니다. 즉, `Sprite`가 체인의 마지막 클래스인 경우에도 고유한 속성 외에도 `DisplayObject` 및 `Container`와 동일한 모든 속성을 갖습니다. 가장 기본적인 클래스는 `DisplayObject`입니다. `DisplayObject`인 것을 스테이지에서 렌더링 할 수 있습니다. `Container`는 상속 체인의 다음 클래스입니다. `DisplayObject`는 다른 `DisplayObjects`의 컨테이너 역할을 할 수 있습니다. 세 번째 체인은 `Sprite` 클래스입니다. Sprite는 무대에 표시될 수 있으며 다른 Sprites에 대한 containers가 될 수 있습니다.
+
+<a id='takingitfurther'></a>
 추가 정보
+---------------
 
-Pixi는 많은 일을 할 수 있지만 모든 것을 할 수는 없습니다! Pixi로 게임이나 복잡한 대화형 응용 프로그램을 만들기 시작하려면 다음과 같은 도우미 라이브러리를 사용해야합니다.
+Pixi는 많은 일을 할 수 있지만 모든 것을 할 수는 없습니다! Pixi로 게임이나 복잡한 대화형 응용 프로그램을 만들기 시작하려면 다음과 같은 도우미 라이브러리를 사용해야 합니다.
 
-Bump : 게임용 2D collision 전 기능의 완벽한 세트.
-Tink : 드래그 앤 드롭, 버튼, 범용 포인터 및 기타 유용한 대화형 도구.
-Charm : Pixi sprites에 사용하기 쉬운 tweening 애니메이션 효과.
-Dust : 폭발, 불, 마술 같은 것을 만들기 위한 입자 효과.
-Sprite Utilities : Pixi sprites를 만들고 사용하는 더 쉽고 직관적인 방법은 물론 state 기계와 애니메이션 플레이어를 추가할 수 있습니다. Pixi와 훨씬 더 재미있는 작업을 할 수 있습니다.
-Sound.js : 사운드 및 음악 효과를 로드, 제어 및 생성하기 위한 마이크로 라이브러리입니다. 게임에 사운드를 추가하는데 필요한 모든 것.
-Smoothie : 진정한 델타 시간 보간법을 사용한 매우 부드러운 sprite 애니메이션. 또한 게임이나 응용 프로그램이 실행되는 fps (초당 프레임 수)를 지정하고 sprite 렌더링 루프와 응용 프로그램 논리 루프를 완전히 분리할 수 있습니다.
-Pixi와 함께이 모든 라이브러리를 사용하는 방법은 Learn PixiJS에서 찾을 수 있습니다.
+-[Bump](https://github.com/kittykatattack/bump) : 게임용 2D collision 전 기능의 완벽한 세트.
+-[Tink](https://github.com/kittykatattack/tink) : 드래그 앤 드롭, 버튼, 범용 포인터 및 기타 유용한 대화형 도구.
+-[Charm](https://github.com/kittykatattack/charm) : Pixi sprites에 사용하기 쉬운 tweening 애니메이션 효과.
+-[Dust](https://github.com/kittykatattack/dust) : 폭발, 불, 마술 같은 것을 만들기 위한 입자 효과.
+-[Sprite Utilities](https://github.com/kittykatattack/spriteUtilities) : Pixi sprites를 만들고 사용하는 더 쉽고 직관적인 방법은 물론 state 기계와 애니메이션 플레이어를 추가할 수 있습니다. Pixi와 훨씬 더 재미있는 작업을 할 수 있습니다.
+-[Sound.js](https://github.com/kittykatattack/sound.js) : 사운드 및 음악 효과를 로드, 제어 및 생성하기 위한 마이크로 라이브러리입니다. 게임에 사운드를 추가하는데 필요한 모든 것.
+-[Smoothie](https://github.com/kittykatattack/smoothie) : 진정한 델타 시간 보간법을 사용한 매우 부드러운 sprite 애니메이션. 또한 게임이나 응용 프로그램이 실행되는 fps (초당 프레임 수)를 지정하고 sprite 렌더링 루프와 응용 프로그램 논리 루프를 완전히 분리할 수 있습니다.
+Pixi와 함께이 모든 라이브러리를 사용하는 방법은 [Learn PixiJS](http://www.springer.com/us/book/9781484210956)에서 찾을 수 있습니다.
 
-Hexi
-해당 라이브러리의 모든 기능을 사용하고 싶지만 직접 통합하는 번거로움을 원하지 않나요? Hexi 사용 : 게임 및 대화형 응용 프로그램 구축을 위한 완벽한 개발 환경 :
+<a id='hexi'></a>
+### Hexi
+
+해당 라이브러리의 모든 기능을 사용하고 싶지만 직접 통합하는 번거로움을 원하지 않나요? **Hexi** 사용 : 게임 및 대화형 응용 프로그램 구축을 위한 완벽한 개발 환경 :
+
 https://github.com/kittykatattack/hexi
-Pixi의 가장 최신 버전 (최신 안정 버전)을이 모든 라이브러리(그리고 더!)와 함께 번들로 제공하여 게임을 만드는 간단하고 재미있는 방법을 제공합니다. Hexi를 사용하면 전역 PIXI 객체에 직접 액세스 할 수 있으므로 Hexi 애플리케이션에서 직접 저수준 Pixi 코드를 작성하고 필요에 따라 Hexi의 추가 편의 기능을 최대한 많이 또는 적게 사용하도록 선택할 수 있습니다.
 
-BabylonJS
-Pixi는 2D에 적합하지만 3D를 할 수 없습니다. 3차원으로 발을 들여 놓을 준비가 되면, 가장 기능이 풍부하고 사용하기 쉬운 웹용 3D 게임 개발 플랫폼은 BabylonJS입니다. 기술을 더 발전시키기 위한 다음 단계입니다.
+Pixi의 가장 최신 버전 (최신 **stable** 버전) 을이 모든 라이브러리(그리고 더!) 와 함께 번들로 제공하여 게임을 만드는 간단하고 재미있는 방법을 제공합니다. Hexi를 사용하면 전역 `PIXI` 객체에 직접 액세스 할 수 있으므로 Hexi 애플리케이션에서 직접 저수준 Pixi 코드를 작성하고 필요에 따라 Hexi의 추가 편의 기능을 최대한 많이 또는 적게 사용하도록 선택할 수 있습니다.
 
+
+<a id='babylonjs'></a>
+### BabylonJS
+
+Pixi는 2D에 적합하지만 3D를 할 수 없습니다. 3차원으로 발을 들여 놓을 준비가 되면, 가장 기능이 풍부하고 사용하기 쉬운 웹용 3D 게임 개발 플랫폼은 [BabylonJS](https://www.babylonjs.com) 입니다. 기술을 더 발전시키기 위한 다음 단계입니다.
+
+<a id='supportingthisproject'></a>
 이 프로젝트를 도와주세요!
-책을 사주세요! 놀랍게도, 누군가는 튜토리얼을 끝내고 책으로 바꿔달라고 실제로 돈을 지불했습니다.
-Learn PixiJS
-(그리고 이것은 세계에서 가장 큰 출판사인 Springer가 출판한 실제적이고 무거운 종이책일 뿐이지만, 친구를 초대하고 불을 놓으며 마시멜로우를 구울 수 있습니다!) 이 튜토리얼의 내용보다 80 % 많은 콘텐츠가 있으며 모든 종류의 대화형 응용 프로그램과 게임을 만들기 위해 Pixi를 사용하기 위해 알아야 할 모든 필수 기술로 가득합니다.
+--------------
+
+책을 구입해주세요! 놀랍게도, 누군가는 튜토리얼을 끝내고 책으로 바꿔달라고 실제로 돈을 지불한 사례가 있습니다!
+
+[Learn PixiJS](http://www.springer.com/us/book/9781484210956)
+
+(그리고 이것은 단순한 "e-book" 이 아니라 세계 최대의 출판사 Springer가 출간한 실제의 두꺼운 종이 책입니다. 이 책으로 친구를 초대하고 불을 놓으며 마시멜로우를 구울 수 있습니다!) 이 튜토리얼의 내용보다 80% 많은 콘텐츠가 있으며 모든 종류의 대화형 응용 프로그램과 게임을 만들기 위해 Pixi를 사용하기 위해 알아야 할 모든 필수 기술로 가득합니다.
 
 방법 알아보기 :
 
@@ -2586,9 +2868,9 @@ Learn PixiJS
 • 입자 효과를 만듭니다.
 • 규모에 관계없이 안정적인 소프트웨어 아키텍처 모델을 구축하십시오.
 • 완벽한 게임을 만드십시오.
-• 보너스로, 모든 코드는 최신 버전의 JavaScript : ES6 / 2015로 작성되었습니다. 그리고 이 책의 코드는 Pixi v3.x를 기반으로 하고 있지만, 최신 버전의 Pixi 4.x에서는 모두 잘 작동합니다!
 
-이 프로젝트를 지원하려면 이 책의 사본을 구입하고 엄마를 위해 다른 사본을 구입하십시오!
+보너스로, 모든 코드는 최신 버전의 JavaScript : ES6 / 2015로 작성되었습니다. 그리고 이 책의 코드는 Pixi v3.x를 기반으로 하고 있지만, 최신 버전의 Pixi 4.x에서는 모두 잘 작동합니다!
 
-또는 엄청난 기부를 해주세요 : http://www.msf.org
+이 프로젝트를 지원하려는 의향이 있다면, 이 책의 사본을 구입해주시고 다른사람을 위한 또 다른 사본을 구입해주세요!
 
+또는 많은 지원을 이곳으로 : http://www.msf.org 부탁드립니다.
