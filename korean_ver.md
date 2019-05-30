@@ -761,7 +761,7 @@ add(name, url, optionObject, callbackFunction)
 
 (참고 : 새로운 파일 배치를 load하기 위해 loader를 재설정해야하는 경우 loader의 `reset` 메소드 인 `PIXI.loader.reset ();`을 호출하십시오.) Pixi의 loader에는 모든 유형의 binary 파일을 load하고 파싱 할 수 있는 옵션을 포함하여 더 많은 고급 기능이 있습니다. 이것은 일반적인일이 아니며 이 튜토리얼의 범위를 벗어나는 방법이므로 [loader의 GitHub저장소에서 자세한 내용을 확인하세요.](https://github.com/englercj/resource-loader).
 
-<a id='positioning'></a>
+<a id='postioning'></a>
 Sprite의 위치 지정
 ----------------
 
@@ -813,7 +813,7 @@ sprite.position.set(x, y)
 
 ```
 
-<a id='sizenscale'></a>
+<a id='size-n-scale'></a>
 크기와 규모
 ----------------------
 
