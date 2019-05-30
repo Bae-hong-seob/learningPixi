@@ -1071,8 +1071,8 @@ Pixi는 Texture Packer라는 유명한 소프트웨어 도구에서 출력하는
 
 이제 텍스처 atlas를 만드는 방법을 알았으므로, 게임 코드에 텍스처를 로드하는 방법을 알아보겠습니다.
 
-<a id='loading-atlas'>
-텍스처 atlas 올리기
+<a id='loading-atlas'></a>
+텍스터 atlas 사용하기
 -----------------
 텍스처 atlas를 Pixi로 가져 오려면 Pixi의 `loader`를 사용하여 로드하십시오. JSON 파일이 Texture Packer로 만들어진 경우, `loader`는 데이터를 해석하고 tileset의 각 프레임에서 텍스처를 자동으로 생성합니다. 다음은 `loader`를 사용하여 `treasureHunter.json` 파일을 로드하는 방법입니다. 로드가 완료되면 `setup` 기능이 실행됩니다.
 
@@ -1086,7 +1086,7 @@ loader
 
 tileset의 각 이미지는 현재 Pixi의 비밀공간에 있는 개별 텍스처입니다. Texture Packer ( "blob.png", "dungeon.png", "explorer.png"등)와 동일한 이름으로 비밀 공간의 각 텍스처에 액세스 할 수 있습니다.
 
-<a id='creating-sprites-from-a-loaded-texture-atlas'>
+<a id='creating-sprites-from-a-loaded-texture-atlas'></a>
 올려진 텍스처 atlas 로부터 sprites 만들기
 -------------------------------------
 Pixi는 텍스처 atlas에서 sprites를 만드는 세 가지 일반적인 방법을 제공합니다.
