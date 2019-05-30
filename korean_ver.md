@@ -451,7 +451,7 @@ app.stage.removeChild(anySprite)
 anySprite.visible = false;
 
 ```
-
+<a id='usingaliases'></a>
 ### aliases 사용
 
 자주 사용하는 Pixi 객체와 메소드에 대해 짧은 형식의 aliases를 생성하여 타이핑을 약간 줄이고 코드를 보다 읽기 쉽게 만들 수 있다. 예를 들어, Pixi 의 모든 객체에 `PIXI` 접두사를 붙이면 어려워지지 않을까요? 그렇게 생각한다면 더 짧은 aliases를 작성하세요. 예를 들어 `TextureCache` 객체에 대한 aliases를 생성하는 방법은 다음과 같습니다.
