@@ -77,7 +77,7 @@ Pixi 사용법
 
          i. Hexi
         ii. BabylonJS
-25. [프로젝트 지원]()
+25. [프로젝트 지원](#supportingthisproject)
 
 <a id='introduction'></a>
 소개
@@ -1029,7 +1029,7 @@ let rocket = new Sprite(texture);
 
 tileset에서 sprite 텍스처를 만드는 것은 매우 빈번한 작업이기 때문에, Pixi는 이를 수행하는데 도움이 되는 보다 편리한 방법을 제공합니다 - 이 방법에 무엇이 있는지 알아보겠습니다.
 
-<a id='textureatlas'></a>
+<a id='texture-atlas'></a>
 텍스터 atlas 사용하기
 ---------------
 
@@ -2340,7 +2340,7 @@ function hitTestRectangle(r1, r2) {
   return hit;
 };
 ```
-
+<a id='casestudy'></a>
 사례 연구 : Treasure Hunter
 ---------------
 
@@ -2803,7 +2803,7 @@ function end() {
 이것은 게임의 상태를 전환하는 방법에 대한 아주 간단한 예이지만 게임에서 원하는만큼의 게임 상태를 유지하고 필요한만큼의 코드로 채울 수 있습니다. 그냥 루프에서 실행하려는 함수의 `state` 값을 변경하십시오.
 그리고 그것은 Treasure Hunter의 모든 것입니다! 조금 더 많은 작업을 하면 이 간단한 프로토 타입을 풀 게임으로 바꿀 수 있습니다. 시도해보십시오!
 
-<a id='spriteproperties'></a>
+<a id='sprite-properties'></a>
 Sprites에 대한 추가 정보
 ---------------
 
@@ -2817,7 +2817,7 @@ DisplayObject > Container > Sprite
 
 상속은 체인의 나중에 클래스가 체인의 이전 클래스에서 속성과 메서드를 사용한다는 것을 의미합니다. 즉, `Sprite`가 체인의 마지막 클래스인 경우에도 고유한 속성 외에도 `DisplayObject` 및 `Container`와 동일한 모든 속성을 갖습니다. 가장 기본적인 클래스는 `DisplayObject`입니다. `DisplayObject`인 것을 스테이지에서 렌더링 할 수 있습니다. `Container`는 상속 체인의 다음 클래스입니다. `DisplayObject`는 다른 `DisplayObjects`의 컨테이너 역할을 할 수 있습니다. 세 번째 체인은 `Sprite` 클래스입니다. Sprite는 무대에 표시될 수 있으며 다른 Sprites에 대한 containers가 될 수 있습니다.
 
-<a id='takingitfurther'></a>
+<a id='taking-it-further'></a>
 추가 정보
 ---------------
 
