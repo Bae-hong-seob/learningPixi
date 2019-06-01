@@ -84,15 +84,15 @@ Pixi 사용법
 -----------
 Pixi는 매우 빠른 2D sprite rendering 엔진입니다. 이것은 당신이 JavaScript와 다른 HTML5 기술을 사용하여 게임과 응용프로그램을 쉽게 만들 수 있도록 대화형 그래픽을 표시하고, 애니메이션을 제작 및 관리할 수 있도록 도와줄 수 있습니다.  Pixi는 분명 하고, 깔끔한 API를 가지고 있으며 텍스처 atlas를 지원하고 sprite(인터랙티브 이미지)를 나타내기 위한 능률화된 시스템을 제공하는 것과 같은 많은 유용한 기능들을 포함하고 있습니다. 또한 완전한 장면 그래프를 통해 중첩된 sprite(sprite 내부의 sprite)의 계층 구조를 만들 수 있을 뿐 아니라 마우스와 터치를 스프라이트에 직접 연결할 수 있습니다. 그리고 가장 중요한 것은 Pixi는 당신이 원하는 만큼 혹은 더 적게 사용할 수 있도록다, 그리고 그것을 당신의 개인적인 코딩 스타일에 적응시키고, 다른 유용한 틀들과 완벽하게 통합할 수 있도록, 당신의 길을 열어준다는 것입니다.
 
-Pixi의 API는 실제로 Macromedia/Adobe Flash가 개척한 잘 적용되고 전투 테스트 된 정교한 API입니다. Old-skool Flash 개발자들은 이에 대해 편안함을 느낄 것 입니다. 다른 현재 sprite rendering framework는 CreateJS, Starling, Sparrow 및 Apple의 SpriteKit과 같은 API를 사용합니다. Pixi의 API의 강점은 그것이 범용 목적이라는 것입니다: 이것은 게임 엔진이 아닙니다. 이러한 사실은 여러분이 좋아하는 것을 만들 수 있는 완전한 표현의 자유를 제공하고, 여러분 자신의 맞춤형 게임 엔진을 포장하기 때문에 좋습니다. 이 튜토리얼 에서는 Pixi의 강력한 image rendering 기능과 scene graph를 결합하여 게임을 만드는 방법을 알아 봅니다. 그러나 Pixi는 단지 게임만을 위한 것이 아닙니다. 당신은 이와 같은 기술을 사용하여 모든 대화 형 미디어 응용 프로그램을 만들 수 있습니다. 즉, 휴대 전화 용 앱을 의미합니다!
+Pixi의 API는 실제로 Macromedia/Adobe Flash가 개척한 잘 적용되고 전투 테스트 된 정교한 API입니다. Old-skool Flash 개발자들은 이에 대해 편안함을 느낄 것 입니다. 다른 현재 sprite rendering framework는 CreateJS, Starling, Sparrow 및 Apple의 SpriteKit과 같은 API를 사용합니다. Pixi의 API의 강점은 그것이 범용 목적이라는 것입니다: 이것은 게임 엔진이 아닙니다. 이러한 사실은 여러분이 좋아하는 것을 만들 수 있는 완전한 표현의 자유를 제공하고, 여러분 자신의 맞춤형 게임 엔진을 포장하기 때문에 좋습니다. 이 튜토리얼 에서는 Pixi의 강력한 image rendering 기능과 scene graph를 결합하여 게임을 만드는 방법을 알아 봅니다. 그러나 Pixi는 단지 게임만을 위한 것이 아닙니다. 여러분은 이와 같은 기술을 사용하여 모든 대화 형 미디어 응용 프로그램을 만들 수 있습니다. 즉, 휴대 전화 용 앱을 의미합니다!
 
-너가 이 튜토리얼을 시작하기 전에 무엇을 알아야 할까요?
+이 튜토리얼을 시작하기 전에 무엇을 알아야 할까요?
 
-HTML과 JavaScript에 대해 충분히 이해하고 있어야 합니다. 당신은 전문가가 아니며, 열심히 배워야하는 야심 찬 초심자입니다. HTML과 JavaScript에 대해 잘 모르는 경우 이 책을 통해 학습을 시작하세요. 
+HTML과 JavaScript에 대해 충분히 이해하고 있어야 합니다. 여러분은 전문가가 아니며, 열심히 배워야하는 야심 찬 초심자입니다. HTML과 JavaScript에 대해 잘 모르는 경우 이 책을 통해 학습을 시작하세요. 
 
 [Foundation Game Design with HTML5 and JavaScript](http://www.apress.com/9781430247166)
 
-내가 이 책을 썼기에 이 책이 최고라고 자부합니다!
+제가 이 책을 썼기에 이 책이 최고라고 자부합니다!
 
 또한 시작할 때 도움이 되는 좋은 인터넷 자원이 있습니다.
 
@@ -103,7 +103,7 @@ HTML과 JavaScript에 대해 충분히 이해하고 있어야 합니다. 당신�
 무엇이든 간에 당신의 학습 방식에 가장 적합한 책을 고르세요.
 이해하셨나요? JavaScript 변수, 함수, 배열 및 객체가 무엇이며 어떻게 사용하는지 알고 있으신가요?  [JSON data files](http://www.copterlabs.com/blog/json-what-it-is-how-it-works-how-to-use-it/)가 무엇인지 알고 계신가요?  [Canvas Drawing API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Drawing_graphics_with_canvas)를 사용해 보셨나요?
 
-Pixi를 사용하려면, 당신의 루트 프로젝트 디렉토리에서 웹 서버를 실행해야 합니다. 웹 서버가 무엇이며 프로젝트 폴더에서 웹 서버를 시작하는 방법을 아시나요? 가장 좋은 방법은  [node.js](http://nodejs.org)를 사용한 다음 사용하기 쉬운 [http-server](https://github.com/nodeapps/http-server)를 설치하는 것입니다. 그러나 그렇게 하고 싶다면 Unix 명령 행 작업에 익숙해 져야합니다. 당신은 [이 비디오](https://www.youtube.com/watch?feature=player_embedded&v=cX9ASUE3YAQ)에서 유닉스를 사용하는 법을 배울 수 있습니다. 이 비디오가 끝이 나면 [이 비디오](https://www.youtube.com/watch?v=INk0ATBbclc)를 따라 해보세요. 당신은 Unix 사용 방법을 배워야 합니다. 배우기까지 2 시간 밖에 걸리지 않으며 컴퓨터와 상호 작용할 수있는 정말 재미 있고 쉬운 방법입니다.
+Pixi를 사용하려면, 먼저 루트 프로젝트 디렉토리에서 웹 서버를 실행해야 합니다. 웹 서버가 무엇이며 프로젝트 폴더에서 웹 서버를 시작하는 방법을 아시나요? 가장 좋은 방법은  [node.js](http://nodejs.org)를 사용한 다음 사용하기 쉬운 [http-server](https://github.com/nodeapps/http-server)를 설치하는 것입니다. 그러나 그렇게 하고 싶다면 Unix 명령 행 작업에 익숙해 져야합니다. [이 비디오](https://www.youtube.com/watch?feature=player_embedded&v=cX9ASUE3YAQ)에서 유닉스를 사용하는 법을 배울 수 있습니다. 이 비디오가 끝이 나면 [이 비디오](https://www.youtube.com/watch?v=INk0ATBbclc)를 따라 해보세요. 당신은 Unix 사용 방법을 배워야 합니다. 배우기까지 2 시간 밖에 걸리지 않으며 컴퓨터와 상호 작용할 수있는 정말 재미 있고 쉬운 방법입니다.
 
 그러나 명령 행을 사용하여 혼란스럽기를 원치 않는다면 몽구스 웹 서버를 사용해보세요:
 
